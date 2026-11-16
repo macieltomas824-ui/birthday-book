@@ -356,7 +356,8 @@ window.CONTENT = {
                                      {
                                          "label":  "PROTAGONISTAS INVITADOS",
                                          "lines":  [
-                                                       "jeje invite a pusheen y a tommy para q vengan a figurar"
+                                                       "jeje invite a folco, pusheen y tommy para q vengan a figurar",
+                                                       "tipo wtf folco quien invito a este tipo"
                                                    ]
                                      },
                                      {
