@@ -328,7 +328,7 @@ window.CONTENT = {
                      "empty":  "Todavía no hay mensajes. La primera página en blanco es tuya.",
                      "maxLength":  600,
                      "showName":  true,
-                     "cooldownSeconds":  20,
+                     "cooldownSeconds":  0,
                      "backend":  {
                                      "provider":  "supabase",
                                      "url":  "https://gleqjuplsuinebzizxff.supabase.co",

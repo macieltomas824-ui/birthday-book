@@ -155,27 +155,31 @@
 
   function setModeLine(kind, text) {
     if (!modeEl) return;
-    const icon = kind === "error" ? "alert" : kind === "cloud" ? "lock" : "lock";
+    if (kind === "local") {
+      modeEl.className = "comments-mode";
+      modeEl.innerHTML = "";
+      modeEl.hidden = true;
+      return;
+    }
+    modeEl.hidden = false;
+    const icon = kind === "error" ? "alert" : "lock";
     modeEl.className = "comments-mode comments-mode--" + kind;
     modeEl.innerHTML = BB.icon(icon) + "<span>" + BB.escape(text) + "</span>";
   }
 
   function setNote() {
     if (!noteEl) return;
-    let text;
     if (mode === "cloud") {
-      text =
-        "Los mensajes se guardan en una base de datos real (Supabase) y se muestran en orden cronológico. " +
-        "La página no tiene botón de borrar y la base de datos no permite editar ni eliminar desde el navegador.";
+      const text =
+        "Los mensajes se guardan en la nube y se muestran en orden cronológico.";
+      noteEl.hidden = false;
+      noteEl.innerHTML = BB.icon("lock") + "<span>" + BB.escape(text) + "</span>";
+      noteEl.classList.remove("comments-note--local");
     } else {
-      text =
-        "Modo local: estos mensajes se guardan solo en este navegador y este dispositivo. " +
-        "Si borras los datos del navegador, se pierden. Para persistencia real entre dispositivos, " +
-        "configura Supabase siguiendo el README." +
-        (modeReason ? " · " + modeReason : "");
+      noteEl.innerHTML = "";
+      noteEl.hidden = true;
+      noteEl.classList.remove("comments-note--local");
     }
-    noteEl.innerHTML = BB.icon(mode === "cloud" ? "lock" : "alert") + "<span>" + BB.escape(text) + "</span>";
-    noteEl.classList.toggle("comments-note--local", mode !== "cloud");
   }
 
   function showStatus(message, tone) {
@@ -302,7 +306,7 @@
     // Guardamos una lista ya normalizada para no arrastrar datos raros.
     BB.store.set(STORAGE_KEY, items);
     loadedAt = Date.now();
-    setModeLine("local", "Modo local · solo en este navegador y dispositivo.");
+    setModeLine("local", "");
     setNote();
     render();
   }

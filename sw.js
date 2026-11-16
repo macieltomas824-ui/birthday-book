@@ -8,7 +8,7 @@
    CACHE_VERSION (por ejemplo a "v2"). El navegador descartará la copia vieja.
    ========================================================================== */
 
-const CACHE_VERSION = "de-tomi-para-ro-v2";
+const CACHE_VERSION = "de-tomi-para-ro-v3";
 const APP_SHELL = [
   "./",
   "index.html",
