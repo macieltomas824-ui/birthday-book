@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-label="Ilustración de un gato durmiendo sobre una pila de libros">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf3ee"/>
+      <stop offset="1" stop-color="#f7dfe5"/>
+    </linearGradient>
+    <linearGradient id="cat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cec6ca"/>
+      <stop offset="1" stop-color="#b3aaaf"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".07"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1125" fill="url(#bg)"/>
+  <circle cx="450" cy="480" r="330" fill="#fffaf6" opacity=".6"/>
+
+  <!-- lámpara -->
+  <g transform="translate(760 190)">
+    <path d="M0 0v160" stroke="#c3a06a" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-48 0h96l-22-52h-52z" fill="#f2c7d1" stroke="#dda2b4" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="46" ry="8" fill="#e7b4c1" opacity=".5"/>
+    <circle cx="0" cy="172" r="10" fill="#c3a06a"/>
+  </g>
+  <circle cx="760" cy="170" r="90" fill="#fff4d8" opacity=".22"/>
+
+  <!-- libros -->
+  <g>
+    <ellipse cx="450" cy="880" rx="300" ry="34" fill="#b98495" opacity=".25" filter="url(#shadow)"/>
+    <!-- libro 1 -->
+    <path d="M150 860h540a16 16 0 0 1 0 44H150a16 16 0 0 1 0-44z" fill="#9cae93"/>
+    <path d="M150 876h540v10H150z" fill="#7e9479" opacity=".5"/>
+    <g stroke="#f1f4ec" stroke-width="2" opacity=".8">
+      <path d="M186 870h150M186 883h96"/>
+    </g>
+    <!-- libro 2 -->
+    <path d="M190 800h500a16 16 0 0 1 0 44H190a16 16 0 0 1 0-44z" fill="#e3a2b6"/>
+    <path d="M190 816h500v10H190z" fill="#c47f96" opacity=".5"/>
+    <g stroke="#fff4f6" stroke-width="2" opacity=".85">
+      <path d="M226 810h180M226 823h110"/>
+    </g>
+    <!-- libro 3 -->
+    <path d="M160 740h530a16 16 0 0 1 0 44H160a16 16 0 0 1 0-44z" fill="#f0dcae"/>
+    <path d="M160 756h530v10H160z" fill="#d2b880" opacity=".5"/>
+    <g stroke="#7b6444" stroke-width="2" opacity=".6">
+      <path d="M196 750h160M196 763h100"/>
+    </g>
+    <!-- libro 4 -->
+    <path d="M225 680h470a16 16 0 0 1 0 44H225a16 16 0 0 1 0-44z" fill="#b6a2b0"/>
+    <path d="M225 696h470v10H225z" fill="#8f7b88" opacity=".45"/>
+  </g>
+
+  <!-- gato -->
+  <g transform="translate(450 560)">
+    <path d="M-210 120c-30-60 0-128 62-150 62-22 130-8 168 34 42 48 40 112-4 146-52 40-132 34-172 4-24-18-40-22-54-34z" fill="url(#cat)"/>
+    <!-- orejas -->
+    <path d="M-142 -6c-22-30-18-56-4-66 18 6 36 22 43 43z" fill="#b8b0b5"/>
+    <path d="M-52 -30c-4-32 6-50 22-50 10 14 14 32 10 52z" fill="#b8b0b5"/>
+    <path d="M-56 -34c-2-22 4-34 13-35 6 10 8 22 6 34z" fill="#e5b7c5"/>
+    <!-- rayas -->
+    <g fill="#9c9398" opacity=".7">
+      <path d="M10 10c30-18 56-18 78 0-26 10-54 10-78 0z"/>
+      <path d="M60 42c24-14 46-14 64 0-22 8-44 8-64 0z"/>
+    </g>
+    <!-- cara dormida -->
+    <path d="M-142 36c-10-8-10-18 0-23 10 5 10 15 0 23zM-104 36c10-8 10-18 0-23-10 5-10 15 0 23z" fill="none" stroke="#5b4a52" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-134 56c5 5 12 5 17 0" fill="none" stroke="#6b5961" stroke-width="3.5" stroke-linecap="round"/>
+    <ellipse cx="-151" cy="51" rx="11" ry="5" fill="#e8a3b6" opacity=".5"/>
+    <ellipse cx="-111" cy="51" rx="11" ry="5" fill="#e8a3b6" opacity=".5"/>
+    <!-- cola -->
+    <path d="M140 92c58 12 90-24 76-62-8-22-34-24-40-6-4 13 10 18 18 8" fill="none" stroke="#aaa1a6" stroke-width="24" stroke-linecap="round"/>
+  </g>
+
+  <!-- Zzz -->
+  <g fill="none" stroke="#b9829a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".7">
+    <path d="M180 330l32-30h-30M218 285l24-22h-22"/>
+  </g>
+
+  <!-- flores -->
+  <g transform="translate(120 940)">
+    <path d="M0 0c10-30 12-62 4-94" fill="none" stroke="#a9b9a1" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="0" cy="-20" r="18" fill="#f4bac8"/><circle cx="16" cy="-4" r="14" fill="#f4bac8"/><circle cx="-16" cy="-4" r="14" fill="#f4bac8"/><circle cx="0" cy="8" r="13" fill="#f4bac8"/>
+    <circle cx="0" cy="-4" r="8" fill="#ecc98d"/>
+  </g>
+
+  <rect width="900" height="1125" fill="#fff" filter="url(#grain)" opacity=".55"/>
+</svg>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Feliz cumpleaños · un libro para ti</title>
+  <meta name="description" content="Un pequeño libro de recuerdos hecho con cariño." />
+  <meta name="theme-color" content="#f7dde4" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Vista previa al compartir el enlace (edita las imágenes si quieres) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Feliz cumpleaños · un libro para ti" />
+  <meta property="og:description" content="Un pequeño libro de recuerdos hecho con cariño." />
+  <meta property="og:image" content="assets/icons/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Iconos / PWA básica -->
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- Tipografías locales: no dependen de Google Fonts al abrir el regalo -->
+  <link rel="preload" href="assets/fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/nunito.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/book.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+
+  <style>
+    /* Pintura rápida antes de que carguen los estilos: evita el destello blanco */
+    html, body { background: #f7e4e8; margin: 0; }
+    #boot { position: fixed; inset: 0; display: grid; place-content: center; gap: 14px;
+      background: radial-gradient(120% 90% at 50% 20%, #fffaf7 0%, #fbe6ea 55%, #f3ccd7 100%);
+      z-index: 999; text-align: center; transition: opacity .5s ease, visibility .5s; }
+    #boot .boot-heart { width: 54px; height: 54px; margin: auto; color: #b95f7d; animation: bootPulse 1.8s ease-in-out infinite; }
+    #boot p { font: 500 13px/1.4 system-ui, sans-serif; letter-spacing: .22em; text-transform: uppercase; color: #8a5f70; margin: 0; }
+    #boot.is-done { opacity: 0; visibility: hidden; }
+    @keyframes bootPulse { 0%,100% { transform: scale(1); opacity: .75 } 50% { transform: scale(1.08); opacity: 1 } }
+    @media (prefers-reduced-motion: reduce) { #boot .boot-heart { animation: none } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#pages">Ir al contenido del libro</a>
+
+  <!-- Pantalla de entrada muy breve (se retira al terminar de montar el libro) -->
+  <div id="boot" aria-hidden="true">
+    <svg class="boot-heart" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <path d="M32 53C18 43 7 34 7 23.5 7 15.5 13 10 20.5 10c4.8 0 9 2.5 11.5 6.5C34.5 12.5 38.7 10 43.5 10 51 10 57 15.5 57 23.5 57 34 46 43 32 53Z" fill="currentColor" opacity=".9"/>
+    </svg>
+    <p>Preparando tu libro</p>
+  </div>
+
+  <!-- Sprite de iconos dibujados a mano (sin emojis, misma estética en todos los equipos) -->
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.4C7.3 16.7 3.4 13.6 3.4 9.7c0-2.9 2.2-5 4.9-5 1.6 0 3 .8 3.7 2.2C12.7 5.5 14.1 4.7 15.7 4.7c2.7 0 4.9 2.1 4.9 5 0 3.9-3.9 7-8.6 10.7Z"/></symbol>
+    <symbol id="i-heart-fill" viewBox="0 0 24 24"><path d="M12 20.4C7.3 16.7 3.4 13.6 3.4 9.7c0-2.9 2.2-5 4.9-5 1.6 0 3 .8 3.7 2.2C12.7 5.5 14.1 4.7 15.7 4.7c2.7 0 4.9 2.1 4.9 5 0 3.9-3.9 7-8.6 10.7Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.6"/><path d="M12 9.4c-1-2.7 0-5.2 2.4-5.9 1.6 2 1.5 4.6-.2 6.4M14.6 12c2.7-1 5.2 0 5.9 2.4-2 1.6-4.6 1.5-6.4-.2M12 14.6c1 2.7 0 5.2-2.4 5.9-1.6-2-1.5-4.6.2-6.4M9.4 12c-2.7 1-5.2 0-5.9-2.4 2-1.6 4.6-1.5 6.4.2"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4.2C11.5 4.2 5 8.2 4 16c-.2 2.2 1.6 4 3.8 4 8.1-1 12.2-7.5 12.2-15.8Z"/><path d="M5.2 19.1c3.7-5 7.6-8 12.3-10.4"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.6A8.7 8.7 0 0 1 9.4 3.8a8.8 8.8 0 1 0 10.8 10.8Z"/><path d="M17.6 4.2v2M16.6 5.2h2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.4 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.9-5.2 2.9 1.1-5.9L3.6 9.6l5.9-.8Z"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2.8c.6 4.7 2.5 6.6 7.2 7.2-4.7.6-6.6 2.5-7.2 7.2-.6-4.7-2.5-6.6-7.2-7.2 4.7-.6 6.6-2.5 7.2-7.2Z"/><path d="M19.2 16.4c.2 1.6.9 2.3 2.5 2.5-1.6.2-2.3.9-2.5 2.5-.2-1.6-.9-2.3-2.5-2.5 1.6-.2 2.3-.9 2.5-2.5Z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4.5 7.5h3l1.3-2h6.4l1.3 2h3a1.5 1.5 0 0 1 1.5 1.5v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5V9a1.5 1.5 0 0 1 1.5-1.5Z"/><circle cx="12" cy="13.2" r="3.4"/></symbol>
+    <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 4.5v15M17 4.5v15M3 9h4M3 15h4M17 9h4M17 15h4M10.5 9.2l4.2 2.8-4.2 2.8Z"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9.5 18V6.4l9-2v11.2"/><circle cx="6.8" cy="18" r="2.8"/><circle cx="15.8" cy="15.6" r="2.8"/></symbol>
+    <symbol id="i-letter" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.8 6.7 8.2 6 8.2-6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.2C10 4.8 7.3 4.2 4 4.6v13.1c3.3-.4 6 .2 8 1.6 2-1.4 4.7-2 8-1.6V4.6c-3.3-.4-6 .2-8 1.6Z"/><path d="M12 6.2v13.1"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h11M4 17h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m14.5 5.5-6 6.5 6 6.5"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9.5 5.5 6 6.5-6 6.5"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19.5 12h-15M11 5.5 4.5 12l6.5 6.5"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4.5 12h15M13 5.5 19.5 12 13 18.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.4 4.3L19 6.8"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.8 21 20H3Z"/><path d="M12 9.5v4.6M12 17.2v.1"/></symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="6.5" rx="1"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.5v11M7.5 10.5 12 15l4.5-4.5M4 19.5h16"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="m8.3 10.8 7.4-4M8.3 13.2l7.4 4"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5"/><path d="M4.5 4.5V12H12"/></symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24"><ellipse cx="7" cy="8.6" rx="2.2" ry="2.8"/><ellipse cx="12" cy="6.7" rx="2.2" ry="2.9"/><ellipse cx="17" cy="8.6" rx="2.2" ry="2.8"/><path d="M12 11.2c3.2 0 5.6 2.5 5.6 5 0 2-1.6 3.2-3.6 3.2-1 0-1.5-.3-2-.3s-1 .3-2 .3c-2 0-3.6-1.2-3.6-3.2 0-2.5 2.4-5 5.6-5Z"/></symbol>
+    <symbol id="i-envelope" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.8 6.7 8.2 6 8.2-6M8 18.5l4-4M16 18.5l-4-4"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 6.5c-3.6 1-6 4.2-6 8.2 0 1.8 1.2 3 2.8 3 1.5 0 2.7-1.1 2.7-2.7 0-1.5-1-2.6-2.5-2.6h-.5c.4-1.7 1.7-3 3.5-3.7ZM19.5 6.5c-3.6 1-6 4.2-6 8.2 0 1.8 1.2 3 2.8 3 1.5 0 2.7-1.1 2.7-2.7 0-1.5-1-2.6-2.5-2.6h-.5c.4-1.7 1.7-3 3.5-3.7Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14" stroke-width="3"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.2 19 12 8 18.8Z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M14 4.5h5.5V10M19 5l-8 8"/><path d="M19 13.5v5a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 18.5v-12A1.5 1.5 0 0 1 5.5 5h5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21c4-5 6.5-8.2 6.5-11.4a6.5 6.5 0 1 0-13 0C5.5 12.8 8 16 12 21Z"/><circle cx="12" cy="9.4" r="2.4"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h12v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"/><path d="M16 9.5h1.8a2.7 2.7 0 0 1 0 5.4H16M7 3.5c-.8 1.2.8 2 0 3.2M11 3.5c-.8 1.2.8 2 0 3.2"/></symbol>
+  </svg>
+
+  <div class="app" id="app">
+    <!-- Barra superior -->
+    <header class="topbar" id="topbar">
+      <button class="brand" id="brand" type="button" aria-label="de tomi para ro · Volver a la portada">
+        <span class="brand__seal" aria-hidden="true"><span id="brand-initial">R</span></span>
+        <span class="brand__text">de tomi para ro</span>
+      </button>
+
+      <div class="chapter" aria-hidden="true">
+        <span class="chapter__kicker" id="chapter-kicker">Capítulo 01</span>
+        <span class="chapter__name" id="chapter-name">Portada</span>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="icon-btn music-btn" id="music-btn" type="button" aria-label="Activar música" aria-pressed="false" hidden>
+          <span class="music-btn__rings" aria-hidden="true"><span></span><span></span><span></span></span>
+          <svg class="icon music-btn__on" aria-hidden="true"><use href="#i-music"></use></svg>
+          <svg class="icon music-btn__off" aria-hidden="true"><use href="#i-music"></use></svg>
+        </button>
+        <button class="icon-btn" id="toc-btn" type="button" aria-label="Abrir el índice" aria-expanded="false" aria-controls="toc">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Escena: el libro y la navegación -->
+    <main class="stage" id="main">
+      <div class="ambient" aria-hidden="true">
+        <svg class="ambient__sprig ambient__sprig--left" viewBox="0 0 220 620">
+          <path d="M118 618C92 500 86 380 96 262c8-90 35-158 78-208" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"/>
+          <g fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55">
+            <path d="M101 480c-42-8-66-40-64-84 40 6 66 36 64 84ZM104 414c38-10 58-38 58-80-36 8-58 34-58 80ZM99 344c-34-6-54-32-52-70 32 4 54 28 52 70ZM102 292c30-8 46-30 46-62-28 6-46 26-46 62Z"/>
+            <path d="M176 104c22-6 34-22 34-46-20 4-34 20-34 46ZM160 158c-24-4-38-22-38-48 22 4 38 20 38 48Z"/>
+          </g>
+          <g fill="currentColor" opacity=".4">
+            <circle cx="170" cy="60" r="3"/><circle cx="54" cy="520" r="2.4"/><circle cx="150" cy="230" r="2.6"/>
+          </g>
+        </svg>
+        <svg class="ambient__sprig ambient__sprig--right" viewBox="0 0 220 620">
+          <path d="M118 618C92 500 86 380 96 262c8-90 35-158 78-208" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"/>
+          <g fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55">
+            <path d="M101 480c-42-8-66-40-64-84 40 6 66 36 64 84ZM104 414c38-10 58-38 58-80-36 8-58 34-58 80ZM99 344c-34-6-54-32-52-70 32 4 54 28 52 70ZM102 292c30-8 46-30 46-62-28 6-46 26-46 62Z"/>
+            <path d="M176 104c22-6 34-22 34-46-20 4-34 20-34 46ZM160 158c-24-4-38-22-38-48 22 4 38 20 38 48Z"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="book-shell">
+        <div class="book" id="book">
+          <div class="pages" id="pages"></div>
+          <div class="book__gutter" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- Flechas laterales (solo computadora) -->
+      <button class="edge-nav edge-nav--prev" id="edge-prev" type="button" aria-label="Página anterior">
+        <svg class="icon" aria-hidden="true"><use href="#i-chevron-left"></use></svg>
+      </button>
+      <button class="edge-nav edge-nav--next" id="edge-next" type="button" aria-label="Página siguiente">
+        <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg>
+      </button>
+
+      <!-- Navegación inferior -->
+      <nav class="navbar" id="navbar" aria-label="Navegación del libro">
+        <button class="nav-btn" id="nav-prev" type="button" aria-label="Página anterior">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>
+        </button>
+
+        <button class="nav-status" id="nav-status" type="button" aria-controls="toc">
+          <span class="nav-status__count"><span id="page-current">01</span><span class="nav-status__sep">/</span><span id="page-total">10</span></span>
+          <span class="nav-status__name" id="nav-name">Portada</span>
+          <span class="nav-status__progress" aria-hidden="true"><span id="nav-progress"></span></span>
+          <span class="visually-hidden">Abrir el índice del libro</span>
+        </button>
+
+        <button class="nav-btn" id="nav-next" type="button" aria-label="Página siguiente">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        </button>
+      </nav>
+
+      <p class="swipe-hint" id="swipe-hint" aria-hidden="true">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        Desliza para pasar
+      </p>
+    </main>
+  </div>
+
+  <!-- Índice / tabla de contenido -->
+  <div class="drawer" id="toc" aria-hidden="true">
+    <div class="drawer__backdrop" data-close-toc></div>
+    <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="toc-title">
+      <header class="drawer__head">
+        <div>
+          <p class="eyebrow">de tomi para ro</p>
+          <h2 class="drawer__title" id="toc-title">Índice del libro</h2>
+          <p class="drawer__subtitle">Puedes ir a cualquier página</p>
+        </div>
+        <button class="icon-btn icon-btn--plain" id="toc-close" type="button" aria-label="Cerrar el índice">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </header>
+      <nav class="drawer__nav" aria-label="Páginas del libro">
+        <ol class="toc-list" id="toc-list"></ol>
+      </nav>
+      <footer class="drawer__foot">
+        <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg>
+        <span>Hecho a mano, página por página.</span>
+        <a class="drawer__edit" href="personalizar.html">Personalizar textos y fotos</a>
+      </footer>
+    </aside>
+  </div>
+
+  <!-- Visor de imágenes ampliadas -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada" aria-hidden="true">
+    <div class="lightbox__backdrop" data-close-lightbox></div>
+    <button class="lightbox__close" id="lightbox-close" type="button" aria-label="Cerrar imagen">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" type="button" aria-label="Imagen anterior">
+      <svg class="icon" aria-hidden="true"><use href="#i-chevron-left"></use></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" type="button" aria-label="Imagen siguiente">
+      <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg>
+    </button>
+    <figure class="lightbox__figure">
+      <div class="lightbox__mat">
+        <img id="lightbox-img" alt="" />
+      </div>
+      <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+    </figure>
+    <div class="lightbox__meta">
+      <span id="lightbox-count" class="lightbox__count"></span>
+      <span class="lightbox__hint">Desliza o usa las flechas</span>
+    </div>
+  </div>
+
+  <!-- Avisos breves -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Corazones de la página final -->
+  <div class="hearts-layer" id="hearts-layer" aria-hidden="true"></div>
+
+  <p class="visually-hidden" id="live-region" aria-live="polite"></p>
+
+  <noscript>
+    <div class="noscript">
+      <p>Este libro necesita JavaScript para pasar sus páginas.</p>
+      <p>Actívalo en tu navegador y vuelve a abrirlo. 💕</p>
+    </div>
+  </noscript>
+
+  <!-- Dependencias locales, sin CDN ni conexiones externas -->
+  <script src="vendor/qrcode.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/overrides.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/qr.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

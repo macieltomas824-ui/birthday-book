@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-label="Ilustración de dos tazas de café sobre una mesa">
+  <defs>
+    <linearGradient id="table" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7e8d8"/>
+      <stop offset="1" stop-color="#eed6c4"/>
+    </linearGradient>
+    <linearGradient id="cupA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf7f2"/>
+      <stop offset="1" stop-color="#efdfd5"/>
+    </linearGradient>
+    <linearGradient id="cupB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4c3cf"/>
+      <stop offset="1" stop-color="#e3a2b6"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".06"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1125" fill="url(#table)"/>
+  <g opacity=".35" stroke="#d9bfa9" stroke-width="2">
+    <path d="M0 220h900M0 420h900M0 620h900M0 820h900M0 1020h900"/>
+    <path d="M220 0v1125M520 0v1125M780 0v1125"/>
+  </g>
+
+  <!-- cuaderno -->
+  <g transform="translate(90 660) rotate(-12)">
+    <rect x="0" y="0" width="250" height="330" rx="10" fill="#fffaf3" stroke="#e2cabb" stroke-width="2"/>
+    <rect x="18" y="18" width="214" height="294" rx="4" fill="none" stroke="#eed8c9" stroke-width="2"/>
+    <g stroke="#e9d3c4" stroke-width="2" stroke-linecap="round">
+      <path d="M44 80h150M44 120h170M44 160h130M44 200h160M44 240h100"/>
+    </g>
+    <path d="M0 0v330" stroke="#d9a9b8" stroke-width="8" opacity=".55"/>
+  </g>
+
+  <!-- cuchara -->
+  <g transform="translate(790 780) rotate(20)" fill="#c9b8a4">
+    <rect x="-8" y="0" width="16" height="210" rx="8"/>
+    <ellipse cx="0" cy="-18" rx="26" ry="38"/>
+  </g>
+
+  <!-- plato B -->
+  <ellipse cx="560" cy="520" rx="230" ry="230" fill="#fffaf5" opacity=".8"/>
+  <ellipse cx="560" cy="520" rx="205" ry="205" fill="none" stroke="#e8cebd" stroke-width="3"/>
+  <!-- taza B -->
+  <ellipse cx="560" cy="640" rx="150" ry="30" fill="#b98495" opacity=".28" filter="url(#shadow)"/>
+  <path d="M420 420h280v130c0 70-62 112-140 112s-140-42-140-112z" fill="url(#cupB)"/>
+  <ellipse cx="560" cy="420" rx="140" ry="42" fill="#f8e3e8"/>
+  <ellipse cx="560" cy="424" rx="118" ry="32" fill="#8a5a3f"/>
+  <ellipse cx="560" cy="420" rx="100" ry="26" fill="#a97350"/>
+  <path d="M698 460c60-16 88 20 74 58-11 30-42 38-68 26" fill="none" stroke="#e3a2b6" stroke-width="26" stroke-linecap="round"/>
+  <path d="M520 430c18 8 42 10 66 4" fill="none" stroke="#c89468" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+
+  <!-- plato A -->
+  <ellipse cx="330" cy="690" rx="190" ry="190" fill="#fffaf5" opacity=".85"/>
+  <ellipse cx="330" cy="690" rx="168" ry="168" fill="none" stroke="#e8cebd" stroke-width="3"/>
+  <!-- taza A -->
+  <ellipse cx="330" cy="780" rx="130" ry="26" fill="#b98495" opacity=".25" filter="url(#shadow)"/>
+  <path d="M210 590h240v110c0 60-54 96-120 96s-120-36-120-96z" fill="url(#cupA)" stroke="#e3cfc1" stroke-width="2"/>
+  <ellipse cx="330" cy="590" rx="120" ry="36" fill="#fffdfa"/>
+  <ellipse cx="330" cy="594" rx="100" ry="27" fill="#8a5a3f"/>
+  <ellipse cx="330" cy="590" rx="84" ry="21" fill="#b07b55"/>
+  <path d="M446 624c54-14 78 18 66 52-9 26-38 34-60 22" fill="none" stroke="#f3e3d8" stroke-width="24" stroke-linecap="round"/>
+
+  <!-- corazón de vapor -->
+  <g fill="none" stroke="#fff8f4" stroke-width="7" stroke-linecap="round" opacity=".9">
+    <path d="M560 250c-24 22-24 56 0 78M560 250c24 22 24 56 0 78"/>
+    <path d="M330 410c-16 14-16 36 0 50M330 410c16 14 16 36 0 50"/>
+  </g>
+
+  <!-- florecitas -->
+  <g transform="translate(760 300)">
+    <path d="M0 90c-4-32-4-60 2-84" stroke="#a9b9a1" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <g fill="#f7c6d2">
+      <circle cx="0" cy="-6" r="17"/><circle cx="17" cy="8" r="15"/><circle cx="-17" cy="8" r="15"/><circle cx="0" cy="20" r="14"/>
+    </g>
+    <circle cx="0" cy="8" r="8" fill="#ecc98d"/>
+  </g>
+  <g transform="translate(190 300) scale(-1 1)">
+    <path d="M0 70c-4-24-4-46 2-64" stroke="#a9b9a1" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <g fill="#f7c6d2">
+      <circle cx="0" cy="-4" r="13"/><circle cx="13" cy="8" r="12"/><circle cx="-13" cy="8" r="12"/><circle cx="0" cy="17" r="11"/>
+    </g>
+    <circle cx="0" cy="7" r="6" fill="#ecc98d"/>
+  </g>
+
+  <rect width="900" height="1125" fill="#fff" filter="url(#grain)" opacity=".55"/>
+</svg>

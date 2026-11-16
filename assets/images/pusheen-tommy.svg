@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Pusheen y Tommy durmiendo juntos en un cojín">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6f2"/>
+      <stop offset="1" stop-color="#fbe3e9"/>
+    </linearGradient>
+    <linearGradient id="cushion" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eeb7c8"/>
+      <stop offset="1" stop-color="#dd99b0"/>
+    </linearGradient>
+    <linearGradient id="grey" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c9c1c5"/>
+      <stop offset="1" stop-color="#b1a8ad"/>
+    </linearGradient>
+    <linearGradient id="ginger" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efc39a"/>
+      <stop offset="1" stop-color="#dda774"/>
+    </linearGradient>
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+
+  <rect width="1000" height="700" fill="url(#wall)"/>
+  <circle cx="500" cy="340" r="280" fill="#fff" opacity=".28"/>
+  <circle cx="500" cy="340" r="230" fill="none" stroke="#e3a2b6" stroke-width="1.5" opacity=".35" stroke-dasharray="3 10"/>
+
+  <!-- ventana / luz -->
+  <g opacity=".5">
+    <rect x="700" y="90" width="200" height="250" rx="100" fill="#fff8f3" stroke="#e8c8d1" stroke-width="2"/>
+    <path d="M800 90v250M700 215h200" stroke="#e8c8d1" stroke-width="2"/>
+  </g>
+
+  <!-- planta -->
+  <g transform="translate(170 360)" opacity=".8">
+    <path d="M0 170c8-60 6-110-6-160" fill="none" stroke="#9eaf95" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-4 80c-40-8-58-32-58-62 34 2 56 22 58 62zM0 120c38-6 56-28 58-56-32 2-54 20-58 56z" fill="#a9b9a1"/>
+    <path d="M-55 170h110l-14 90c-2 12-82 12-84 0z" fill="#e8b3c2"/>
+  </g>
+
+  <!-- sombra -->
+  <ellipse cx="500" cy="565" rx="330" ry="52" fill="#c98fa3" opacity=".3" filter="url(#blur)"/>
+
+  <!-- cojín -->
+  <path d="M190 470c-26-42 4-92 58-92h504c54 0 84 50 58 92l-40 78c-14 28-44 42-76 42H306c-32 0-62-14-76-42z" fill="url(#cushion)"/>
+  <path d="M230 430c40-18 130-26 270-26s230 8 270 26" fill="none" stroke="#f6cfd9" stroke-width="3" opacity=".8"/>
+  <path d="M250 520c50 18 140 24 250 24s200-6 250-24" fill="none" stroke="#c47f96" stroke-width="3" opacity=".35"/>
+  <g fill="#f3c3d0" opacity=".9">
+    <circle cx="255" cy="556" r="8"/><circle cx="745" cy="556" r="8"/>
+    <circle cx="300" cy="578" r="6"/><circle cx="700" cy="578" r="6"/>
+  </g>
+
+  <!-- Tommy dormido -->
+  <g transform="translate(610 330) rotate(-8)">
+    <path d="M-10 170c-52-8-82-58-66-113 12-42 52-66 100-58 38 6 65 38 66 76 2 48-42 100-100 95z" fill="url(#ginger)"/>
+    <path d="M60 70c28-30 22-55 6-60-18 5-34 22-39 47z" fill="#dda774"/>
+    <path d="M68 66c18-20 14-36 4-40-12 4-22 15-25 31z" fill="#eaa9ae"/>
+    <path d="M-28 78c-38-4-56 26-44 54 9 22 38 28 56 12" fill="none" stroke="#dda774" stroke-width="22" stroke-linecap="round"/>
+    <path d="M-8 66c-8 20-6 34 2 44M24 58c-4 20-2 34 4 44" fill="none" stroke="#c98655" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+    <path d="M-30 108c10 8 22 10 34 6" fill="none" stroke="#9c6a57" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M-22 96c4-5 9-5 13 0-2 6-11 6-13 0z" fill="#d98d94"/>
+    <path d="M36 20c-14-6-30 4-32 18" fill="none" stroke="#f6ddbe" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+    <g stroke="#b98a63" stroke-width="2.5" stroke-linecap="round" opacity=".7">
+      <path d="M-4 100l-42-8M-2 108l-44 2"/>
+    </g>
+    <ellipse cx="8" cy="96" rx="14" ry="6" fill="#e8a3b6" opacity=".4"/>
+  </g>
+
+  <!-- Pusheen dormida -->
+  <g transform="translate(380 330) rotate(6)">
+    <path d="M-120 170c-62-8-98-62-80-122 16-52 62-80 120-72 46 6 78 44 80 90 2 58-50 112-120 104z" fill="url(#grey)"/>
+    <path d="M-96 44c-18-30-14-54 0-66 20 5 38 23 46 47z" fill="#b8b0b5"/>
+    <path d="M-86 40c-10-17-8-30 0-38 11 4 21 14 26 26z" fill="#e5b7c5"/>
+    <path d="M-108 86c0-44 20-72 54-72s54 28 54 72c0 34-22 52-54 52s-54-18-54-52z" fill="#cec6ca" opacity=".55"/>
+    <g fill="#9c9398" opacity=".65">
+      <path d="M-120 52c14-8 26-6 34 0-10 6-23 6-34 0z"/>
+      <path d="M-116 78c12-7 23-5 30 0-9 5-20 5-30 0z"/>
+    </g>
+    <path d="M-58 92c-9-7-9-16 0-20 9 4 9 13 0 20zM-14 92c9-7 9-16 0-20-9 4-9 13 0 20z" fill="none" stroke="#5b4a52" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M-32 110c5 5 12 5 17 0" fill="none" stroke="#6b5961" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-51" cy="107" rx="11" ry="5" fill="#e8a3b6" opacity=".45"/>
+    <ellipse cx="-13" cy="107" rx="11" ry="5" fill="#e8a3b6" opacity=".45"/>
+    <path d="M56 100c50 6 78-22 68-58-6-22-32-24-40-6-5 12 10 18 18 9" fill="none" stroke="#aba3a7" stroke-width="22" stroke-linecap="round"/>
+  </g>
+
+  <!-- zzz -->
+  <g fill="none" stroke="#b9829a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".75">
+    <path d="M700 220l30-28h-28M744 178l22-20h-20"/>
+    <path d="M280 200l24-22h-22M316 164l18-16h-16"/>
+  </g>
+
+  <!-- corazones -->
+  <g fill="#e3a2b6" opacity=".8">
+    <path d="M500 150c9-13 24-9 24 3 0 10-14 16-24 24-10-8-24-14-24-24 0-12 15-16 24-3z"/>
+    <path d="M590 250c6-9 16-6 16 2 0 7-9 11-16 16-7-5-16-9-16-16 0-8 10-11 16-2z"/>
+    <path d="M360 270c5-7 13-5 13 2 0 5-7 9-13 13-6-4-13-8-13-13 0-7 8-9 13-2z"/>
+  </g>
+</svg>

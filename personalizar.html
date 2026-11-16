@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menú de edición · Entre pétalos</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root{--bg:#f7e4e8;--paper:#fffaf7;--rose:#b95f7d;--rose2:#e3a2b6;--plum:#6e3550;--ink:#452b38;--soft:#7d5c6b;--line:rgba(110,53,80,.18);--ok:#2f5b35;--err:#8b2440}
+    *{box-sizing:border-box} html,body{margin:0} body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:radial-gradient(100% 60% at 10% 0%,#fffdfb,transparent 60%),var(--bg);line-height:1.5}
+    .wrap{max-width:1100px;margin:0 auto;padding:16px 14px 80px}
+    h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--plum);margin:0 0 .35rem}
+    h1{font-size:clamp(26px,5vw,38px)} h2{font-size:1.25rem} h3{font-size:1.05rem}
+    p{margin:.15rem 0 .7rem;color:var(--soft)} a{color:var(--rose)}
+    .top{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:space-between;margin-bottom:12px}
+    .card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 12px 30px rgba(110,53,80,.07)}
+    .grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+    .grid-3{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+    label{display:grid;gap:4px;font-size:.9rem;font-weight:700;color:var(--plum)}
+    input[type=text],input[type=url],input[type=number],textarea,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:10px;font:500 14px/1.45 inherit;color:var(--ink);background:#fff}
+    textarea{min-height:84px;resize:vertical} textarea.tall{min-height:140px}
+    input:focus,textarea:focus,select:focus{outline:3px solid rgba(185,95,125,.25);border-color:rgba(185,95,125,.5)}
+    .hint{font-size:.8rem;font-weight:500;color:var(--soft)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--plum);font:700 13.5px/1 inherit;cursor:pointer;text-decoration:none}
+    .btn:hover{background:#fbeaee} .btn--primary{background:var(--rose);color:#fff;border-color:transparent} .btn--primary:hover{filter:brightness(1.03);background:var(--rose)}
+    .btn--danger{color:var(--err)} .btn--small{min-height:36px;padding:6px 11px;font-size:12.5px}
+    .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .status{position:sticky;bottom:8px;z-index:5;margin-top:12px;padding:11px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px rgba(0,0,0,.08);font-weight:600;font-size:.92rem}
+    .status.ok{color:var(--ok);border-color:rgba(47,91,53,.25);background:#f2f8f1}
+    .status.err{color:var(--err);border-color:rgba(139,36,64,.2);background:#fff4f6}
+    code,kbd{background:#fbeaee;padding:1px 5px;border-radius:4px;font-size:.92em}
+    details{border:1px solid var(--line);border-radius:14px;background:rgba(255,250,247,.55);margin:10px 0;overflow:hidden}
+    details[open]{background:rgba(255,255,255,.75)}
+    summary{cursor:pointer;font:700 1rem/1.3 Georgia,"Times New Roman",serif;color:var(--plum);padding:12px 14px;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::before{content:"▸ ";color:var(--rose)} details[open] summary::before{content:"▾ "}
+    .inner{padding:0 14px 14px}
+    .item{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;margin:10px 0}
+    .item-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+    .thumb{width:92px;height:116px;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:#fbeaee;flex:none}
+    .media-row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+    .media-fields{flex:1;min-width:min(100%,250px);display:grid;gap:8px}
+    .warn{background:#fff7e8;border:1px solid rgba(160,110,20,.25);color:#6a4a10;padding:10px 12px;border-radius:10px;font-size:.88rem}
+    .danger-box{background:#fff4f6;border:1px solid rgba(139,36,64,.2);color:#6b1f35;padding:12px;border-radius:12px;font-size:.9rem}
+    hr{border:0;border-top:1px dashed var(--line);margin:14px 0}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#fbeaee;color:var(--plum);font-size:.75rem;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Menú de edición</h1>
+        <p>Edita los textos y contenidos del libro sin tocar código. Guarda, recarga el libro y revisa los cambios.</p>
+      </div>
+      <div class="row">
+        <a class="btn" href="index.html" target="_blank" rel="noopener">Abrir el libro</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <button class="btn btn--primary" id="save" type="button">Guardar cambios</button>
+        <button class="btn" id="export" type="button">Exportar copia (JSON)</button>
+        <label class="btn" for="importFile" style="cursor:pointer">Importar copia<input id="importFile" type="file" accept="application/json" hidden></label>
+        <button class="btn btn--danger" id="reset" type="button">Restaurar contenido original</button>
+      </div>
+      <p class="hint" style="margin-top:10px">Los cambios se guardan en <strong>este navegador</strong> (localStorage) y se aplican al abrir/recargar <code>index.html</code>. Para usarlos en la versión publicada, edita aquí, pulsa <strong>Exportar copia</strong> y guárdala; luego puedes pedir que se apliquen al archivo base antes de publicar, o importar la copia en el navegador donde vayas a revisar. Las fotos subidas como archivo se guardan en el navegador (pueden ser pesadas): para la versión final es mejor usar archivos en <code>assets/images/</code> o <code>assets/drawings/</code>.</p>
+    </div>
+
+    <details open>
+      <summary>1. Datos generales y portada</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Nombre de ella<input id="herName" type="text"></label>
+          <label>Tu nombre<input id="yourName" type="text"></label>
+          <label>Inicial de ella<input id="herInitial" type="text" maxlength="3"></label>
+          <label>Tu inicial<input id="yourInitial" type="text" maxlength="3"></label>
+          <label>Fecha (texto)<input id="dateLabel" type="text" placeholder="15 de noviembre"></label>
+          <label>Año<input id="year" type="number"></label>
+          <label>Fecha corta<input id="shortDate" type="text" placeholder="15 · 11 · 2026"></label>
+          <label>URL pública (siteUrl)<input id="siteUrl" type="url" placeholder="https://..."><span class="hint">Para compartir y para los códigos QR definitivos.</span></label>
+        </div>
+        <h3 style="margin-top:12px">Portada</h3>
+        <div class="grid">
+          <label>Texto superior (kicker)<input id="coverKicker" type="text"></label>
+          <label>Listón / cinta<input id="coverRibbon" type="text"></label>
+          <label>Título línea 1<input id="coverTitle1" type="text"></label>
+          <label>Título línea 2<input id="coverTitle2" type="text"></label>
+          <label>Botón<input id="coverButton" type="text"></label>
+          <label>Pista inferior<input id="coverHint" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Mensaje de bienvenida<textarea id="coverWelcome"></textarea></label>
+      </div>
+    </details>
+
+    <details open>
+      <summary>2. Pusheen y Tommy / Fotos con Spotify</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Título de la página<input id="photosTitle" type="text"></label>
+          <label>Subtítulo corto (kicker)<input id="photosKicker" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Introducción<textarea id="photosIntro"></textarea></label>
+        <div id="photoList"></div>
+        <div class="row" style="margin-top:8px"><button class="btn" id="addPhoto" type="button">+ Añadir foto</button></div>
+        <hr>
+        <div class="grid">
+          <label>Título de la nota<input id="photosLetterTitle" type="text"></label>
+          <label>Frase de cierre<input id="photosClosing" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Texto de la nota<textarea id="photosLetter" class="tall"></textarea></label>
+      </div>
+    </details>
+
+    <details>
+      <summary>3. Pequeños universos (temas)</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Título<input id="themesTitle" type="text"></label>
+          <label>Kicker<input id="themesKicker" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Subtítulo<textarea id="themesSubtitle"></textarea></label>
+        <div id="themesList"></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>4. Cosas que son nuestras (iconos/enlaces)</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Título<input id="iconsTitle" type="text"></label>
+          <label>Kicker<input id="iconsKicker" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Subtítulo<textarea id="iconsSubtitle"></textarea></label>
+        <div id="iconsList"></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>5. Álbum / Collage</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Título<input id="collageTitle" type="text"></label>
+          <label>Kicker<input id="collageKicker" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Subtítulo<textarea id="collageSubtitle"></textarea></label>
+        <label style="margin-top:8px">Pista<input id="collageHint" type="text"></label>
+        <div id="collageList"></div>
+        <div class="row" style="margin-top:8px"><button class="btn" id="addCollage" type="button">+ Añadir foto al álbum</button></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>6. Dibujos</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Título<input id="drawingsTitle" type="text"></label>
+          <label>Kicker<input id="drawingsKicker" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Subtítulo<textarea id="drawingsSubtitle"></textarea></label>
+        <label style="margin-top:8px">Pista<input id="drawingsHint" type="text"></label>
+        <label style="margin-top:8px">Pie de página<input id="drawingsFooter" type="text"></label>
+        <div id="drawingsList"></div>
+        <div class="row" style="margin-top:8px"><button class="btn" id="addDrawing" type="button">+ Añadir dibujo</button></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>7. Jardín QR (flores)</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Título<input id="flowersTitle" type="text"></label>
+          <label>Kicker<input id="flowersKicker" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Subtítulo<textarea id="flowersSubtitle"></textarea></label>
+        <label style="margin-top:8px">Nota<input id="flowersNote" type="text"></label>
+        <div id="flowersList"></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>8. Libro de mensajes</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Título<input id="commentsTitle" type="text"></label>
+          <label>Kicker<input id="commentsKicker" type="text"></label>
+          <label>Texto del botón<input id="commentsButton" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Subtítulo<textarea id="commentsSubtitle"></textarea></label>
+        <label style="margin-top:8px">Placeholder del mensaje<input id="commentsPlaceholder" type="text"></label>
+        <label style="margin-top:8px">Texto cuando no hay mensajes<input id="commentsEmpty" type="text"></label>
+      </div>
+    </details>
+
+    <details>
+      <summary>9. Créditos</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Kicker<input id="creditsKicker" type="text"></label>
+          <label>Título<input id="creditsTitle" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Pista<textarea id="creditsHint"></textarea></label>
+        <div id="creditsList"></div>
+        <h3 style="margin-top:12px">Final de créditos</h3>
+        <label>Líneas finales (una por línea)<textarea id="creditsEndLines" class="tall"></textarea></label>
+        <div class="grid" style="margin-top:8px">
+          <label>Título final (ej. FIN)<input id="creditsEndTitle" type="text"></label>
+          <label>Nota final<input id="creditsEndNote" type="text"></label>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>10. Página final</summary>
+      <div class="inner">
+        <div class="grid">
+          <label>Kicker<input id="finalKicker" type="text"></label>
+          <label>Título<input id="finalTitle" type="text"></label>
+          <label>Título de la carta<input id="finalLetterTitle" type="text"></label>
+          <label>Firma<input id="finalSignature" type="text"></label>
+        </div>
+        <label style="margin-top:8px">Mensaje principal<textarea id="finalMessage"></textarea></label>
+        <label style="margin-top:8px">Carta<textarea id="finalLetter" class="tall"></textarea></label>
+        <label style="margin-top:8px">Despedida<textarea id="finalClosing"></textarea></label>
+      </div>
+    </details>
+
+    <details>
+      <summary>11. Avanzado (JSON y publicación final)</summary>
+      <div class="inner">
+        <p class="hint">Aquí puedes ver/editar el contenido completo en formato JSON. Úsalo con cuidado (debe ser JSON válido). Puedes pegar un JSON exportado para aplicarlo todo de una vez.</p>
+        <div class="row" style="margin-bottom:8px">
+          <button class="btn btn--small" id="jsonLoad" type="button">Cargar JSON actual al editor</button>
+          <button class="btn btn--small" id="jsonApply" type="button">Aplicar JSON del editor</button>
+        </div>
+        <label>Contenido (JSON)<textarea id="jsonArea" class="tall" style="min-height:260px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px"></textarea></label>
+        <hr>
+        <div class="danger-box">
+          <strong>Antes de subir la versión final (para que nadie pueda editarla):</strong>
+          <ol style="margin:8px 0 0 18px;padding:0">
+            <li>Deja todos los textos e imágenes definitivos. Si usaste “Guardar cambios” en el navegador, exporta la copia y pídeme que aplique esos cambios al archivo <code>js/config.js</code> (o reemplázalo tú) para que queden fijos en la web publicada.</li>
+            <li>Elimina el acceso al editor: borra <code>personalizar.html</code> y <code>js/overrides.js</code>, quita la línea <code>&lt;script src="js/overrides.js"&gt;&lt;/script&gt;</code> de <code>index.html</code>, quita el enlace “Personalizar textos y fotos” del índice en <code>index.html</code>, y elimina esas dos entradas de <code>sw.js</code> (APP_SHELL). Luego sube <code>CACHE_VERSION</code> en <code>sw.js</code>.</li>
+            <li>Así publicado, la página no tendrá menú/editor y nadie podrá modificar el contenido desde el navegador.</li>
+          </ol>
+        </div>
+      </div>
+    </details>
+
+    <div id="status" class="status" aria-live="polite">Listo para editar.</div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/overrides.js"></script>
+  <script>
+  (function(){
+    var $ = function(id){ return document.getElementById(id); };
+    var base = JSON.parse(JSON.stringify(window.CONTENT || {}));
+    var C = JSON.parse(JSON.stringify(window.CONTENT || {}));
+
+    function S(v){ return v == null ? "" : String(v); }
+    function arr(v){ return Array.isArray(v) ? v : []; }
+    function obj(v){ return (v && typeof v === 'object' && !Array.isArray(v)) ? v : {}; }
+
+    function ensure(){
+      C.people = obj(C.people); C.birthday = obj(C.birthday); C.cover = obj(C.cover);
+      C.meta = obj(C.meta); C.photosPage = obj(C.photosPage); C.photosPage.items = arr(C.photosPage.items);
+      C.themes = obj(C.themes); C.themes.items = arr(C.themes.items);
+      C.icons = obj(C.icons); C.icons.items = arr(C.icons.items);
+      C.collage = obj(C.collage); C.collage.photos = arr(C.collage.photos);
+      C.drawings = obj(C.drawings); C.drawings.items = arr(C.drawings.items);
+      C.flowers = obj(C.flowers); C.flowers.items = arr(C.flowers.items);
+      C.comments = obj(C.comments); C.credits = obj(C.credits); C.credits.sections = arr(C.credits.sections); C.credits.ending = obj(C.credits.ending);
+      C.finalPage = obj(C.finalPage);
+    }
+
+    function setStatus(msg, kind){ var el=$('status'); el.textContent=msg; el.className='status '+(kind||''); }
+
+    function thumbSrc(src, fallback){
+      var s = S(src).trim();
+      return s || fallback || 'assets/images/recuerdo-01.svg';
+    }
+
+    function fillBasics(){
+      $('herName').value=S(C.people.herName); $('yourName').value=S(C.people.yourName);
+      $('herInitial').value=S(C.people.herInitial); $('yourInitial').value=S(C.people.yourInitial);
+      $('dateLabel').value=S(C.birthday.dateLabel); $('year').value=C.birthday.year||''; $('shortDate').value=S(C.birthday.shortDate);
+      $('siteUrl').value=S(C.siteUrl);
+      $('coverKicker').value=S(C.cover.kicker); $('coverRibbon').value=S(C.cover.ribbon);
+      $('coverTitle1').value=S(C.cover.titleLine1); $('coverTitle2').value=S(C.cover.titleLine2);
+      $('coverButton').value=S(C.cover.button); $('coverHint').value=S(C.cover.hint);
+      $('coverWelcome').value=S(C.cover.welcome);
+
+      $('photosTitle').value=S(C.photosPage.title); $('photosKicker').value=S(C.photosPage.kicker);
+      $('photosIntro').value=S(C.photosPage.intro); $('photosLetterTitle').value=S(C.photosPage.letterTitle);
+      $('photosLetter').value=S(C.photosPage.letter); $('photosClosing').value=S(C.photosPage.closing);
+
+      $('themesTitle').value=S(C.themes.title); $('themesKicker').value=S(C.themes.kicker); $('themesSubtitle').value=S(C.themes.subtitle);
+      $('iconsTitle').value=S(C.icons.title); $('iconsKicker').value=S(C.icons.kicker); $('iconsSubtitle').value=S(C.icons.subtitle);
+      $('collageTitle').value=S(C.collage.title); $('collageKicker').value=S(C.collage.kicker); $('collageSubtitle').value=S(C.collage.subtitle); $('collageHint').value=S(C.collage.hint);
+      $('drawingsTitle').value=S(C.drawings.title); $('drawingsKicker').value=S(C.drawings.kicker); $('drawingsSubtitle').value=S(C.drawings.subtitle); $('drawingsHint').value=S(C.drawings.hint); $('drawingsFooter').value=S(C.drawings.footer);
+      $('flowersTitle').value=S(C.flowers.title); $('flowersKicker').value=S(C.flowers.kicker); $('flowersSubtitle').value=S(C.flowers.subtitle); $('flowersNote').value=S(C.flowers.note);
+      $('commentsTitle').value=S(C.comments.title); $('commentsKicker').value=S(C.comments.kicker); $('commentsSubtitle').value=S(C.comments.subtitle); $('commentsPlaceholder').value=S(C.comments.placeholder); $('commentsButton').value=S(C.comments.button); $('commentsEmpty').value=S(C.comments.empty);
+      $('creditsKicker').value=S(C.credits.kicker); $('creditsTitle').value=S(C.credits.title); $('creditsHint').value=S(C.credits.hint);
+      $('creditsEndLines').value=arr(C.credits.ending.lines).join('\n'); $('creditsEndTitle').value=S(C.credits.ending.title); $('creditsEndNote').value=S(C.credits.ending.note);
+      $('finalKicker').value=S(C.finalPage.kicker); $('finalTitle').value=S(C.finalPage.title); $('finalLetterTitle').value=S(C.finalPage.letterTitle); $('finalSignature').value=S(C.finalPage.signature);
+      $('finalMessage').value=S(C.finalPage.message); $('finalLetter').value=S(C.finalPage.letter); $('finalClosing').value=S(C.finalPage.closing);
+    }
+
+    function readBasics(){
+      C.people.herName=$('herName').value.trim()||'Mi amor'; C.people.yourName=$('yourName').value.trim()||'Tu nombre';
+      C.people.herInitial=$('herInitial').value.trim()||(C.people.herName||'M').charAt(0); C.people.yourInitial=$('yourInitial').value.trim()||(C.people.yourName||'T').charAt(0);
+      C.birthday.dateLabel=$('dateLabel').value; C.birthday.year=parseInt($('year').value,10)||C.birthday.year||2026; C.birthday.shortDate=$('shortDate').value;
+      C.siteUrl=$('siteUrl').value.trim();
+      C.cover.kicker=$('coverKicker').value; C.cover.ribbon=$('coverRibbon').value; C.cover.titleLine1=$('coverTitle1').value; C.cover.titleLine2=$('coverTitle2').value;
+      C.cover.button=$('coverButton').value; C.cover.hint=$('coverHint').value; C.cover.welcome=$('coverWelcome').value; C.cover.name='{{herName}}';
+
+      C.photosPage.title=$('photosTitle').value; C.photosPage.kicker=$('photosKicker').value; C.photosPage.intro=$('photosIntro').value;
+      C.photosPage.letterTitle=$('photosLetterTitle').value; C.photosPage.letter=$('photosLetter').value; C.photosPage.closing=$('photosClosing').value;
+
+      C.themes.title=$('themesTitle').value; C.themes.kicker=$('themesKicker').value; C.themes.subtitle=$('themesSubtitle').value;
+      C.icons.title=$('iconsTitle').value; C.icons.kicker=$('iconsKicker').value; C.icons.subtitle=$('iconsSubtitle').value;
+      C.collage.title=$('collageTitle').value; C.collage.kicker=$('collageKicker').value; C.collage.subtitle=$('collageSubtitle').value; C.collage.hint=$('collageHint').value;
+      C.drawings.title=$('drawingsTitle').value; C.drawings.kicker=$('drawingsKicker').value; C.drawings.subtitle=$('drawingsSubtitle').value; C.drawings.hint=$('drawingsHint').value; C.drawings.footer=$('drawingsFooter').value;
+      C.flowers.title=$('flowersTitle').value; C.flowers.kicker=$('flowersKicker').value; C.flowers.subtitle=$('flowersSubtitle').value; C.flowers.note=$('flowersNote').value;
+      C.comments.title=$('commentsTitle').value; C.comments.kicker=$('commentsKicker').value; C.comments.subtitle=$('commentsSubtitle').value; C.comments.placeholder=$('commentsPlaceholder').value; C.comments.button=$('commentsButton').value; C.comments.empty=$('commentsEmpty').value;
+      C.credits.kicker=$('creditsKicker').value; C.credits.title=$('creditsTitle').value; C.credits.hint=$('creditsHint').value;
+      C.credits.ending.lines=$('creditsEndLines').value.split(/\n/);
+      C.credits.ending.title=$('creditsEndTitle').value; C.credits.ending.note=$('creditsEndNote').value;
+      C.finalPage.kicker=$('finalKicker').value; C.finalPage.title=$('finalTitle').value; C.finalPage.letterTitle=$('finalLetterTitle').value; C.finalPage.signature=$('finalSignature').value;
+      C.finalPage.message=$('finalMessage').value; C.finalPage.letter=$('finalLetter').value; C.finalPage.closing=$('finalClosing').value; C.finalPage.from='{{yourName}}';
+    }
+
+    function escAttr(v){ return S(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+    function esc(v){ return S(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function makeUpload(container, srcSelector, imgSelector){
+      var up = container.querySelector('input[type=file]');
+      if(!up) return;
+      up.addEventListener('change', function(){
+        var f = up.files && up.files[0]; if(!f) return;
+        var r = new FileReader();
+        r.onload = function(e){ var inp=container.querySelector(srcSelector); if(inp){ inp.value=S(e.target.result); } var im=container.querySelector(imgSelector); if(im){ im.src=inp.value; } setStatus('Imagen cargada en este navegador. Pulsa "Guardar cambios".','ok'); };
+        r.readAsDataURL(f);
+      });
+    }
+
+    function renderPhotos(){
+      var list=$('photoList'); list.innerHTML='';
+      C.photosPage.items.forEach(function(item,i){
+        var d=document.createElement('div'); d.className='item'; d.setAttribute('data-i',i);
+        d.innerHTML='<div class="item-head"><strong>Foto '+(i+1)+'</strong><button class="btn btn--danger btn--small" data-act="rm">Quitar</button></div>'+
+          '<div class="media-row"><img class="thumb" data-thumb src="'+escAttr(thumbSrc(item.src))+'" alt="">'+
+          '<div class="media-fields">'+
+          '<label>Imagen (ruta o URL)<input data-k="src" type="text" value="'+escAttr(item.src)+'"></label>'+
+          '<input type="file" accept="image/*" data-upload><span class="hint">Subir archivo lo guarda en este navegador (puede pesar). Mejor: archivo en <code>assets/images/</code> y su ruta.</span>'+
+          '<label>Título<input data-k="title" type="text" value="'+escAttr(item.title)+'"></label>'+
+          '<label>Nota<textarea data-k="note">'+esc(item.note||item.caption)+'</textarea></label>'+
+          '<label>Texto alternativo<input data-k="alt" type="text" value="'+escAttr(item.alt)+'"></label>'+
+          '<label>Enlace de Spotify<input data-k="spotifyUrl" type="url" value="'+escAttr(item.spotifyUrl)+'" placeholder="https://open.spotify.com/track/..."></label>'+
+          '</div></div>';
+        list.appendChild(d);
+        makeUpload(d,'[data-k=src]','[data-thumb]');
+        d.querySelector('[data-k=src]').addEventListener('input', function(e){ d.querySelector('[data-thumb]').src=thumbSrc(e.target.value); });
+      });
+      bindRemove(list, function(i){ C.photosPage.items.splice(i,1); renderPhotos(); }, readPhotos);
+    }
+    function readPhotos(){
+      var nodes=$('photoList').querySelectorAll('.item');
+      C.photosPage.items=[];
+      for(var i=0;i<nodes.length;i++){ var n=nodes[i]; var g=function(k){return n.querySelector('[data-k="'+k+'"]').value;};
+        C.photosPage.items.push({src:g('src').trim()||'assets/images/recuerdo-01.svg', alt:g('alt'), title:g('title'), note:g('note'), spotifyUrl:g('spotifyUrl').trim()}); }
+    }
+
+    function renderThemes(){
+      var list=$('themesList'); list.innerHTML='';
+      C.themes.items.forEach(function(item,i){
+        var d=document.createElement('div'); d.className='item';
+        d.innerHTML='<div class="item-head"><strong>Tema '+(i+1)+'</strong></div>'+
+          '<div class="grid">'+
+          '<label>Título<input data-k="title" type="text" value="'+escAttr(item.title)+'"></label>'+
+          '<label>Kicker<input data-k="kicker" type="text" value="'+escAttr(item.kicker)+'"></label>'+
+          '<label>Tono<select data-k="tone"><option value="blush">blush</option><option value="sage">sage</option><option value="cream">cream</option><option value="rose">rose</option></select></label>'+
+          '</div><label style="margin-top:8px">Texto<textarea data-k="text">'+esc(item.text)+'</textarea></label>';
+        list.appendChild(d); d.querySelector('[data-k=tone]').value=item.tone||'blush';
+      });
+    }
+    function readThemes(){
+      var nodes=$('themesList').querySelectorAll('.item');
+      for(var i=0;i<nodes.length&&i<C.themes.items.length;i++){ var n=nodes[i]; var g=function(k){return n.querySelector('[data-k="'+k+'"]').value;};
+        C.themes.items[i].title=g('title'); C.themes.items[i].kicker=g('kicker'); C.themes.items[i].text=g('text'); C.themes.items[i].tone=g('tone'); }
+    }
+
+    function renderIcons(){
+      var list=$('iconsList'); list.innerHTML='';
+      C.icons.items.forEach(function(item,i){
+        var d=document.createElement('div'); d.className='item';
+        d.innerHTML='<div class="item-head"><strong>Elemento '+(i+1)+'</strong></div>'+
+          '<div class="grid">'+
+          '<label>Título<input data-k="title" type="text" value="'+escAttr(item.title)+'"></label>'+
+          '<label>Texto del botón<input data-k="actionLabel" type="text" value="'+escAttr(item.actionLabel)+'"></label>'+
+          '<label>Tipo<select data-k="kind"><option value="external">Enlace externo</option><option value="page">Ir a página del libro</option></select></label>'+
+          '<label>URL (si es externo)<input data-k="url" type="url" value="'+escAttr(item.url)+'"></label>'+
+          '<label>Página destino (si es interna)<input data-k="pageId" type="text" value="'+escAttr(item.pageId)+'" placeholder="collage, comments, drawings..."></label>'+
+          '</div><label style="margin-top:8px">Descripción<textarea data-k="description">'+esc(item.description)+'</textarea></label>';
+        list.appendChild(d); d.querySelector('[data-k=kind]').value=item.kind||'external';
+      });
+    }
+    function readIcons(){
+      var nodes=$('iconsList').querySelectorAll('.item');
+      for(var i=0;i<nodes.length&&i<C.icons.items.length;i++){ var n=nodes[i]; var g=function(k){return n.querySelector('[data-k="'+k+'"]').value;};
+        C.icons.items[i].title=g('title'); C.icons.items[i].description=g('description'); C.icons.items[i].actionLabel=g('actionLabel');
+        C.icons.items[i].kind=g('kind'); C.icons.items[i].url=g('url'); C.icons.items[i].pageId=g('pageId'); }
+    }
+
+    function renderCollage(){
+      var list=$('collageList'); list.innerHTML='';
+      C.collage.photos.forEach(function(item,i){
+        var d=document.createElement('div'); d.className='item';
+        d.innerHTML='<div class="item-head"><strong>Foto álbum '+(i+1)+'</strong><button class="btn btn--danger btn--small" data-act="rm">Quitar</button></div>'+
+          '<div class="media-row"><img class="thumb" data-thumb src="'+escAttr(thumbSrc(item.src))+'" alt="">'+
+          '<div class="media-fields">'+
+          '<label>Imagen<input data-k="src" type="text" value="'+escAttr(item.src)+'"></label>'+
+          '<input type="file" accept="image/*" data-upload>'+
+          '<label>Descripción (caption)<textarea data-k="caption">'+esc(item.caption)+'</textarea></label>'+
+          '<label>Texto alternativo<input data-k="alt" type="text" value="'+escAttr(item.alt)+'"></label>'+
+          '<div class="grid"><label>Fecha/etiqueta<input data-k="date" type="text" value="'+escAttr(item.date)+'"></label>'+
+          '<label>Proporción<select data-k="ratio"><option value="4/5">4/5</option><option value="1/1">1/1</option><option value="3/4">3/4</option></select></label></div>'+
+          '</div></div>';
+        list.appendChild(d); d.querySelector('[data-k=ratio]').value=item.ratio||'4/5';
+        makeUpload(d,'[data-k=src]','[data-thumb]');
+        d.querySelector('[data-k=src]').addEventListener('input', function(e){ d.querySelector('[data-thumb]').src=thumbSrc(e.target.value); });
+      });
+      bindRemove(list,function(i){ C.collage.photos.splice(i,1); renderCollage(); }, readCollage);
+    }
+    function readCollage(){
+      var nodes=$('collageList').querySelectorAll('.item'); C.collage.photos=[];
+      for(var i=0;i<nodes.length;i++){ var n=nodes[i]; var g=function(k){return n.querySelector('[data-k="'+k+'"]').value;};
+        C.collage.photos.push({src:g('src').trim()||'assets/images/recuerdo-01.svg', alt:g('alt'), caption:g('caption'), date:g('date'), ratio:g('ratio')}); }
+    }
+
+    function renderDrawings(){
+      var list=$('drawingsList'); list.innerHTML='';
+      C.drawings.items.forEach(function(item,i){
+        var d=document.createElement('div'); d.className='item';
+        d.innerHTML='<div class="item-head"><strong>Dibujo '+(i+1)+'</strong><button class="btn btn--danger btn--small" data-act="rm">Quitar</button></div>'+
+          '<div class="media-row"><img class="thumb" data-thumb src="'+escAttr(thumbSrc(item.src,'assets/drawings/dibujo-01.svg'))+'" alt="">'+
+          '<div class="media-fields">'+
+          '<label>Imagen<input data-k="src" type="text" value="'+escAttr(item.src)+'"></label>'+
+          '<input type="file" accept="image/*" data-upload>'+
+          '<label>Título<input data-k="title" type="text" value="'+escAttr(item.title)+'"></label>'+
+          '<label>Nota<textarea data-k="note">'+esc(item.note)+'</textarea></label>'+
+          '<label>Texto alternativo<input data-k="alt" type="text" value="'+escAttr(item.alt)+'"></label>'+
+          '<label>Tamaño<select data-k="size"><option value="normal">normal</option><option value="wide">wide</option><option value="tall">tall</option></select></label>'+
+          '</div></div>';
+        list.appendChild(d); d.querySelector('[data-k=size]').value=item.size||'normal';
+        makeUpload(d,'[data-k=src]','[data-thumb]');
+        d.querySelector('[data-k=src]').addEventListener('input', function(e){ d.querySelector('[data-thumb]').src=thumbSrc(e.target.value,'assets/drawings/dibujo-01.svg'); });
+      });
+      bindRemove(list,function(i){ C.drawings.items.splice(i,1); renderDrawings(); }, readDrawings);
+    }
+    function readDrawings(){
+      var nodes=$('drawingsList').querySelectorAll('.item'); C.drawings.items=[];
+      for(var i=0;i<nodes.length;i++){ var n=nodes[i]; var g=function(k){return n.querySelector('[data-k="'+k+'"]').value;};
+        C.drawings.items.push({src:g('src').trim()||'assets/drawings/dibujo-01.svg', alt:g('alt'), title:g('title'), note:g('note'), size:g('size')}); }
+    }
+
+    function renderFlowers(){
+      var list=$('flowersList'); list.innerHTML='';
+      C.flowers.items.forEach(function(item,i){
+        var d=document.createElement('div'); d.className='item';
+        d.innerHTML='<div class="item-head"><strong>Flor '+(i+1)+' <span class="pill">'+esc(item.id||'')+'</span></strong></div>'+
+          '<div class="grid">'+
+          '<label>Etiqueta<input data-k="label" type="text" value="'+escAttr(item.label)+'"></label>'+
+          '<label>Flor<select data-k="flower"><option value="rose">rose</option><option value="daisy">daisy</option><option value="tulip">tulip</option></select></label>'+
+          '<label>Página destino (pageId)<input data-k="pageId" type="text" value="'+escAttr(item.pageId)+'"></label>'+
+          '<label>URL externa (opcional)<input data-k="url" type="url" value="'+escAttr(item.url)+'"></label>'+
+          '</div><label style="margin-top:8px">Descripción<textarea data-k="description">'+esc(item.description)+'</textarea></label>';
+        list.appendChild(d); d.querySelector('[data-k=flower]').value=item.flower||'rose';
+      });
+    }
+    function readFlowers(){
+      var nodes=$('flowersList').querySelectorAll('.item');
+      for(var i=0;i<nodes.length&&i<C.flowers.items.length;i++){ var n=nodes[i]; var g=function(k){return n.querySelector('[data-k="'+k+'"]').value;};
+        C.flowers.items[i].label=g('label'); C.flowers.items[i].description=g('description'); C.flowers.items[i].flower=g('flower');
+        C.flowers.items[i].pageId=g('pageId'); C.flowers.items[i].url=g('url'); }
+    }
+
+    function renderCredits(){
+      var list=$('creditsList'); list.innerHTML='';
+      C.credits.sections.forEach(function(sec,i){
+        var d=document.createElement('div'); d.className='item';
+        d.innerHTML='<div class="item-head"><strong>Bloque '+(i+1)+'</strong></div>'+
+          '<label>Etiqueta<input data-k="label" type="text" value="'+escAttr(sec.label)+'"></label>'+
+          '<label style="margin-top:8px">Líneas (una por línea)<textarea data-k="lines">'+esc(arr(sec.lines).join('\n'))+'</textarea></label>';
+        list.appendChild(d);
+      });
+    }
+    function readCredits(){
+      var nodes=$('creditsList').querySelectorAll('.item');
+      for(var i=0;i<nodes.length&&i<C.credits.sections.length;i++){ var n=nodes[i];
+        C.credits.sections[i].label=n.querySelector('[data-k=label]').value;
+        C.credits.sections[i].lines=n.querySelector('[data-k=lines]').value.split(/\n/);
+      }
+    }
+
+    function bindRemove(list, onRemove, readFn){
+      list.querySelectorAll('[data-act=rm]').forEach(function(btn){
+        btn.addEventListener('click', function(){ readBasics(); readAllLists(); var item=btn.closest('.item'); var idx=Array.prototype.indexOf.call(list.children,item); if(idx>-1) onRemove(idx); });
+      });
+    }
+
+    function renderAllLists(){ renderPhotos(); renderThemes(); renderIcons(); renderCollage(); renderDrawings(); renderFlowers(); renderCredits(); }
+    function readAllLists(){ readPhotos(); readThemes(); readIcons(); readCollage(); readDrawings(); readFlowers(); readCredits(); }
+
+    function collect(){ readBasics(); readAllLists(); return C; }
+
+    function fill(){ ensure(); fillBasics(); renderAllLists(); }
+
+    $('addPhoto').addEventListener('click', function(){ collect(); C.photosPage.items.push({src:'assets/images/recuerdo-04.svg',alt:'Nueva foto',title:'Nueva foto',note:'Escribe una nota y un enlace de Spotify.',spotifyUrl:''}); renderPhotos(); });
+    $('addCollage').addEventListener('click', function(){ collect(); C.collage.photos.push({src:'assets/images/recuerdo-01.svg',alt:'',caption:'',date:'',ratio:'4/5'}); renderCollage(); });
+    $('addDrawing').addEventListener('click', function(){ collect(); C.drawings.items.push({src:'assets/drawings/dibujo-01.svg',alt:'',title:'Nuevo dibujo',note:'',size:'normal'}); renderDrawings(); });
+
+    $('save').addEventListener('click', function(){
+      try{ collect(); var ok=window.BB && window.BB.saveContentOverride ? window.BB.saveContentOverride(C) : false;
+        if(!ok){ setStatus('No se pudo guardar (posible límite de almacenamiento por imágenes pesadas). Usa rutas a archivos en assets/ o exporta la copia JSON.', 'err'); return; }
+        setStatus('Cambios guardados en este navegador. Recarga index.html para verlos aplicados.', 'ok');
+      }catch(e){ setStatus('Error al guardar: '+e.message,'err'); }
+    });
+
+    $('export').addEventListener('click', function(){ collect(); var blob=new Blob([JSON.stringify(C,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='contenido-libro.json'; a.click(); setTimeout(function(){URL.revokeObjectURL(a.href);},1000); setStatus('Copia exportada (contenido-libro.json).','ok'); });
+    $('importFile').addEventListener('change', function(){ var f=this.files&&this.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(e){ try{ var data=JSON.parse(S(e.target.result)); C=JSON.parse(JSON.stringify(window.BB.mergeContent(base,data))); fill(); setStatus('Copia importada. Pulsa "Guardar cambios" para aplicarla.','ok'); }catch(err){ setStatus('Archivo JSON no válido.','err'); } }; r.readAsText(f); this.value=''; });
+
+    $('reset').addEventListener('click', function(){ if(!confirm('¿Restaurar el contenido original en este navegador? Se perderán los cambios guardados aquí.')) return; window.BB.clearContentOverride(); C=JSON.parse(JSON.stringify(base)); fill(); setStatus('Contenido original restaurado.','ok'); });
+
+    $('jsonLoad').addEventListener('click', function(){ collect(); $('jsonArea').value=JSON.stringify(C,null,2); setStatus('JSON actual cargado en el editor.','ok'); });
+    $('jsonApply').addEventListener('click', function(){ try{ var data=JSON.parse($('jsonArea').value||'{}'); C=JSON.parse(JSON.stringify(window.BB.mergeContent(base,data))); fill(); setStatus('JSON aplicado al formulario. Pulsa "Guardar cambios" para conservarlo.','ok'); }catch(e){ setStatus('JSON no válido: '+e.message,'err'); } });
+
+    ensure(); fill();
+  })();
+  </script>
+</body>
+</html>

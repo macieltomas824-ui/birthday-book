@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" role="img" aria-label="Ilustración de Tommy, un gato naranja de ojos verdes">
+  <defs>
+    <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efc39a"/>
+      <stop offset="1" stop-color="#dda774"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbeedb"/>
+      <stop offset="1" stop-color="#f3ddc0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#fce9dd"/>
+      <stop offset="1" stop-color="#fce9dd" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <circle cx="400" cy="430" r="330" fill="url(#glow)"/>
+  <ellipse cx="400" cy="748" rx="220" ry="34" fill="#d9a9b8" opacity=".26" filter="url(#soft)"/>
+
+  <g stroke="#c3a06a" stroke-width="3" stroke-linecap="round" opacity=".65">
+    <path d="M160 300h18M169 291v18"/>
+    <path d="M646 250h14M653 243v14"/>
+    <path d="M605 410h10M610 405v10"/>
+  </g>
+
+  <!-- cola -->
+  <path d="M565 700c78 14 116-36 101-84-9-29-44-31-51-7-5 17 14 25 24 13" fill="none" stroke="#d79e6c" stroke-width="34" stroke-linecap="round"/>
+  <path d="M648 700c34 1 54-11 64-30" fill="none" stroke="#b97f50" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+
+  <!-- cuerpo sentado -->
+  <path d="M240 735c-14-120 42-215 160-215s174 95 160 215c-8 69-74 93-160 93s-152-24-160-93z" fill="url(#fur)"/>
+  <path d="M330 720c0-92 25-158 70-158s70 66 70 158c0 57-30 80-70 80s-70-23-70-80z" fill="url(#cream)" opacity=".9"/>
+
+  <!-- patas delanteras -->
+  <path d="M312 744c-7 35 8 57 38 57 25 0 38-20 32-47l-8-28z" fill="#f1c79f"/>
+  <path d="M488 744c7 35-8 57-38 57-25 0-38-20-32-47l8-28z" fill="#f1c79f"/>
+  <g stroke="#c98a5b" stroke-width="3" stroke-linecap="round" opacity=".65">
+    <path d="M338 776v12M352 776v12M462 776v12M448 776v12"/>
+  </g>
+
+  <!-- orejas -->
+  <path d="M282 388c-47-61-40-113-9-127 35 9 68 43 78 92z" fill="#dda774"/>
+  <path d="M518 388c47-61 40-113 9-127-35 9-68 43-78 92z" fill="#dda774"/>
+  <path d="M299 375c-29-38-25-72-6-83 21 7 42 29 49 61z" fill="#eaa9ae"/>
+  <path d="M501 375c29-38 25-72 6-83-21 7-42 29-49 61z" fill="#eaa9ae"/>
+
+  <!-- cabeza -->
+  <path d="M400 300c-96 0-166 66-166 160 0 104 74 168 166 168s166-64 166-168c0-94-70-160-166-160z" fill="url(#fur)"/>
+  <path d="M400 430c-48 0-80 26-80 62 0 44 36 76 80 76s80-32 80-76c0-36-32-62-80-62z" fill="url(#cream)"/>
+
+  <!-- rayas de la frente -->
+  <g fill="none" stroke="#c98655" stroke-width="9" stroke-linecap="round" opacity=".8">
+    <path d="M355 326c-4 22-2 38 6 48"/>
+    <path d="M400 318v46"/>
+    <path d="M445 326c4 22 2 38-6 48"/>
+  </g>
+
+  <!-- ojos verdes -->
+  <g>
+    <ellipse cx="337" cy="424" rx="30" ry="33" fill="#f6efdf"/>
+    <ellipse cx="463" cy="424" rx="30" ry="33" fill="#f6efdf"/>
+    <ellipse cx="337" cy="427" rx="19" ry="24" fill="#7d9b6a"/>
+    <ellipse cx="463" cy="427" rx="19" ry="24" fill="#7d9b6a"/>
+    <ellipse cx="337" cy="427" rx="8" ry="18" fill="#3b2b26"/>
+    <ellipse cx="463" cy="427" rx="8" ry="18" fill="#3b2b26"/>
+    <circle cx="345" cy="417" r="6" fill="#fff"/>
+    <circle cx="471" cy="417" r="6" fill="#fff"/>
+    <path d="M300 394c16-10 33-13 49-9M451 385c16-4 33-1 49 9" fill="none" stroke="#b87b4e" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+  </g>
+
+  <!-- nariz y boca -->
+  <path d="M392 472c5-6 11-6 16 0-2 8-14 8-16 0z" fill="#d98d94"/>
+  <path d="M400 478v8M400 486c-8 10-18 10-24 2M400 486c8 10 18 10 24 2" fill="none" stroke="#9c6a57" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="300" cy="470" rx="22" ry="10" fill="#e8a3b6" opacity=".5"/>
+  <ellipse cx="500" cy="470" rx="22" ry="10" fill="#e8a3b6" opacity=".5"/>
+
+  <!-- bigotes -->
+  <g stroke="#b98a63" stroke-width="3.5" stroke-linecap="round" opacity=".8">
+    <path d="M318 470L236 458M318 484L232 488M318 498L240 516"/>
+    <path d="M482 470l82-12M482 484l86 4M482 498l78 18"/>
+  </g>
+
+  <!-- corazón junto a la pata -->
+  <path d="M540 636c-17-11-33-22-33-37 0-10 7-16 16-16 7 0 13 4 17 10 4-6 10-10 17-10 9 0 16 6 16 16 0 15-16 26-33 37z" fill="#e8a3b6" opacity=".85"/>
+</svg>

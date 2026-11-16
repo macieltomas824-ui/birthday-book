@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Marco de tulipanes para código QR">
+  <defs>
+    <linearGradient id="tulip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6bccb"/>
+      <stop offset="1" stop-color="#d97f9c"/>
+    </linearGradient>
+    <linearGradient id="tulip2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbe0e6"/>
+      <stop offset="1" stop-color="#e8a8bb"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a9b9a1"/>
+      <stop offset="1" stop-color="#7f9678"/>
+    </linearGradient>
+  </defs>
+
+  <!-- hojas -->
+  <g fill="url(#stem)">
+    <path d="M300 540c-64-40-108-118-94-204 58 36 104 112 94 204z" opacity=".9"/>
+    <path d="M300 540c64-40 108-118 94-204-58 36-104 112-94 204z" opacity=".9"/>
+    <path d="M300 546c-18-58-52-96-102-112 8 54 44 96 102 112z" opacity=".7"/>
+    <path d="M300 546c18-58 52-96 102-112-8 54-44 96-102 112z" opacity=".7"/>
+  </g>
+
+  <!-- tallos -->
+  <g fill="none" stroke="url(#stem)" stroke-width="9" stroke-linecap="round">
+    <path d="M240 330c-10 74-8 130 4 190"/>
+    <path d="M360 330c10 74 8 130-4 190"/>
+    <path d="M300 352v150"/>
+  </g>
+
+  <!-- tulipanes superiores -->
+  <g transform="translate(300 92)">
+    <path d="M-62 0c-2-56 22-88 62-104 40 16 64 48 62 104 0 48-28 72-62 72S-62 48-62 0z" fill="url(#tulip)"/>
+    <path d="M0-100c-8 42-8 92 0 156M-34-72c-4 34-4 76 0 118M34-72c4 34 4 76 0 118" fill="none" stroke="#c56d88" stroke-width="3" opacity=".5" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(160 184) rotate(-24)">
+    <path d="M-44 0c-2-40 16-64 44-76 28 12 46 36 44 76 0 34-20 52-44 52S-44 34-44 0z" fill="url(#tulip2)"/>
+    <path d="M0-70c-6 30-6 66 0 112" fill="none" stroke="#d99aae" stroke-width="3" opacity=".55" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(440 184) rotate(24)">
+    <path d="M-44 0c-2-40 16-64 44-76 28 12 46 36 44 76 0 34-20 52-44 52S-44 34-44 0z" fill="url(#tulip2)"/>
+    <path d="M0-70c-6 30-6 66 0 112" fill="none" stroke="#d99aae" stroke-width="3" opacity=".55" stroke-linecap="round"/>
+  </g>
+
+  <!-- florecitas laterales -->
+  <g transform="translate(88 388)">
+    <path d="M0 34c0-24 4-42 12-58" fill="none" stroke="#a9b9a1" stroke-width="3.5" stroke-linecap="round"/>
+    <g fill="#f6bccb"><ellipse cy="-8" rx="13" ry="20"/><ellipse cy="-8" rx="13" ry="20" transform="rotate(72)"/><ellipse cy="-8" rx="13" ry="20" transform="rotate(144)"/><ellipse cy="-8" rx="13" ry="20" transform="rotate(216)"/><ellipse cy="-8" rx="13" ry="20" transform="rotate(288)"/></g>
+    <circle r="9" fill="#ecc98d"/>
+  </g>
+  <g transform="translate(512 404) scale(.85)">
+    <path d="M0 34c0-24 4-42 12-58" fill="none" stroke="#a9b9a1" stroke-width="3.5" stroke-linecap="round"/>
+    <g fill="#fbe0e6"><ellipse cy="-8" rx="13" ry="20"/><ellipse cy="-8" rx="13" ry="20" transform="rotate(72)"/><ellipse cy="-8" rx="13" ry="20" transform="rotate(144)"/><ellipse cy="-8" rx="13" ry="20" transform="rotate(216)"/><ellipse cy="-8" rx="13" ry="20" transform="rotate(288)"/></g>
+    <circle r="9" fill="#ecc98d"/>
+  </g>
+
+  <!-- centro para QR -->
+  <circle cx="300" cy="300" r="151" fill="#fffaf7"/>
+  <circle cx="300" cy="300" r="151" fill="none" stroke="#efc6d1" stroke-width="3"/>
+  <circle cx="300" cy="300" r="158" fill="none" stroke="#f6d9e0" stroke-width="1.5"/>
+
+  <!-- lazo -->
+  <g fill="#e3a2b6">
+    <path d="M300 554c-22-26-58-22-58 4 0 18 30 26 58 12z"/>
+    <path d="M300 554c22-26 58-22 58 4 0 18-30 26-58 12z"/>
+    <circle cx="300" cy="556" r="10" fill="#cf7f99"/>
+  </g>
+</svg>

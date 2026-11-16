@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-label="Ilustración de un picnic improvisado con fresas y flores">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf3ec"/>
+      <stop offset="1" stop-color="#f8dfe2"/>
+    </linearGradient>
+    <pattern id="check" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect width="80" height="80" fill="#fffaf4"/>
+      <rect width="40" height="40" fill="#f3c5cf"/>
+      <rect x="40" y="40" width="40" height="40" fill="#f3c5cf"/>
+    </pattern>
+    <radialGradient id="straw" cx="35%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#e9797c"/>
+      <stop offset="1" stop-color="#c04f5d"/>
+    </radialGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".06"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1125" fill="url(#bg)"/>
+
+  <!-- manta -->
+  <g transform="translate(450 590) rotate(-7)">
+    <rect x="-350" y="-330" width="700" height="660" rx="10" fill="url(#check)"/>
+    <rect x="-350" y="-330" width="700" height="660" rx="10" fill="none" stroke="#e7b6c2" stroke-width="3"/>
+    <path d="M-350 330l700-660M-350 150l480-480M-350 480l680-660" stroke="#fff" stroke-width="6" opacity=".35"/>
+  </g>
+
+  <!-- sombra -->
+  <ellipse cx="450" cy="900" rx="300" ry="40" fill="#c98fa3" opacity=".2" filter="url(#shadow)"/>
+
+  <!-- cesta -->
+  <g transform="translate(220 640)">
+    <path d="M-120 0h240l-24 170c-2 20-190 20-192 0z" fill="#d8ab77" stroke="#b98a58" stroke-width="3"/>
+    <path d="M-120 50h240M-116 100h232" stroke="#b98a58" stroke-width="3" opacity=".7"/>
+    <path d="M-104 -6c0-70 50-108 104-108S104-76 104-6" fill="none" stroke="#b98a58" stroke-width="12" stroke-linecap="round"/>
+    <path d="M-120 18h240" stroke="#fff0dc" stroke-width="20" opacity=".5"/>
+  </g>
+
+  <!-- baguette -->
+  <g transform="translate(560 700) rotate(28)">
+    <rect x="-140" y="-34" width="280" height="68" rx="34" fill="#e7c08a"/>
+    <g stroke="#c99a62" stroke-width="5" stroke-linecap="round" opacity=".7">
+      <path d="M-86-18l18 36M-38-18l18 36M10-18l18 36M58-18l18 36M106-18l18 36"/>
+    </g>
+  </g>
+
+  <!-- plato de fresas -->
+  <g transform="translate(560 530)">
+    <circle r="120" fill="#fffaf5"/>
+    <circle r="102" fill="none" stroke="#eeD8cd" stroke-width="3"/>
+    <g>
+      <g transform="translate(-40 -18) rotate(-12)">
+        <path d="M0 0c30-34 56-20 56 8 0 32-34 58-56 72-22-14-56-40-56-72 0-28 26-42 56-8z" fill="url(#straw)"/>
+        <path d="M-22-10l10-18 10 16 12-16 6 20" fill="#7d9b6a"/>
+        <g fill="#ffe6c9" opacity=".8">
+          <circle cx="-22" cy="16" r="3"/><circle cx="2" cy="24" r="3"/><circle cx="22" cy="10" r="3"/><circle cx="-8" cy="44" r="2.5"/><circle cx="14" cy="46" r="2.5"/>
+        </g>
+      </g>
+      <g transform="translate(48 34) rotate(16) scale(.8)">
+        <path d="M0 0c30-34 56-20 56 8 0 32-34 58-56 72-22-14-56-40-56-72 0-28 26-42 56-8z" fill="url(#straw)"/>
+        <path d="M-22-10l10-18 10 16 12-16 6 20" fill="#7d9b6a"/>
+      </g>
+      <g transform="translate(30 -58) rotate(8) scale(.65)">
+        <path d="M0 0c30-34 56-20 56 8 0 32-34 58-56 72-22-14-56-40-56-72 0-28 26-42 56-8z" fill="url(#straw)"/>
+        <path d="M-22-10l10-18 10 16 12-16 6 20" fill="#7d9b6a"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- limonada -->
+  <g transform="translate(690 850)">
+    <path d="M-52-110h104l-12 190c-2 18-78 18-80 0z" fill="#f7e0b8" stroke="#e5c48f" stroke-width="3"/>
+    <path d="M-48-50h96" stroke="#fff8e8" stroke-width="3" opacity=".8"/>
+    <ellipse cy="-110" rx="52" ry="12" fill="#f2d5a4"/>
+    <circle cx="-16" cy="-20" r="22" fill="#f5dd8a" opacity=".8"/>
+    <path d="M40 20l30-20" stroke="#e3a2b6" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- flores sueltas -->
+  <g transform="translate(120 900)">
+    <path d="M0 40c-2-34 4-60 20-80" fill="none" stroke="#a9b9a1" stroke-width="4" stroke-linecap="round"/>
+    <g fill="#fffaf5"><ellipse cy="-16" rx="12" ry="28"/><ellipse cy="-16" rx="12" ry="28" transform="rotate(60)"/><ellipse cy="-16" rx="12" ry="28" transform="rotate(120)"/></g>
+    <circle r="12" fill="#ecc98d"/>
+  </g>
+  <g transform="translate(790 400) scale(.9)">
+    <path d="M0 40c-2-34 4-60 20-80" fill="none" stroke="#a9b9a1" stroke-width="4" stroke-linecap="round"/>
+    <g fill="#f3bac8"><ellipse cy="-16" rx="12" ry="28"/><ellipse cy="-16" rx="12" ry="28" transform="rotate(60)"/><ellipse cy="-16" rx="12" ry="28" transform="rotate(120)"/></g>
+    <circle r="12" fill="#ecc98d"/>
+  </g>
+
+  <!-- tarjeta -->
+  <g transform="translate(150 380) rotate(-10)">
+    <rect x="-100" y="-70" width="200" height="140" rx="6" fill="#fffaf3" stroke="#e8cfc1" stroke-width="2"/>
+    <path d="M-60 10c8-12 22-8 22 2 0 8-12 14-22 21-10-7-22-13-22-21 0-10 14-14 22-2z" fill="#e3a2b6"/>
+    <path d="M-40 44h100" stroke="#e9d3c4" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-40 58h62" stroke="#e9d3c4" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <rect width="900" height="1125" fill="#fff" filter="url(#grain)" opacity=".5"/>
+</svg>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Estudio de códigos QR · Entre pétalos</title>
+  <meta name="description" content="Genera e imprime los códigos QR definitivos del libro." />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="../assets/fonts/nunito.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face { font-family: "Nunito"; src: url("../assets/fonts/nunito.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+    @font-face { font-family: "Cormorant Garamond"; src: url("../assets/fonts/cormorant.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+
+    :root {
+      --paper: #fffaf7;
+      --blush: #f7dde4;
+      --blush-soft: #fbeaee;
+      --rose-deep: #b95f7d;
+      --plum: #6e3550;
+      --ink: #452b38;
+      --ink-soft: #7d5c6b;
+      --sage: #a9b9a1;
+      --line: rgba(110, 53, 80, .18);
+      --shadow: 0 18px 50px rgba(110, 53, 80, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; min-height: 100%; }
+
+    body {
+      font-family: "Nunito", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(90% 60% at 12% 0%, #fffdfb 0%, transparent 60%),
+        radial-gradient(70% 50% at 100% 10%, #fbeaee 0%, transparent 55%),
+        #f7e4e8;
+      line-height: 1.6;
+      padding: clamp(16px, 4vw, 48px) clamp(14px, 4vw, 40px) 72px;
+    }
+
+    h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; color: var(--plum); line-height: 1.1; margin: 0; }
+    p { margin: 0; }
+    a { color: var(--rose-deep); }
+
+    .tool { max-width: 1120px; margin: 0 auto; }
+
+    .tool__head {
+      display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
+      gap: 18px; margin-bottom: 22px;
+    }
+    .tool__kicker {
+      font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--ink-soft); margin-bottom: 6px;
+    }
+    .tool__title { font-size: clamp(30px, 6vw, 46px); }
+    .tool__subtitle { color: var(--ink-soft); max-width: 60ch; margin-top: 8px; }
+    .tool__back {
+      display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+      padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px;
+      background: rgba(255, 255, 255, .66); color: var(--plum); text-decoration: none;
+      font-weight: 700; font-size: 14px;
+    }
+    .tool__back:hover { background: #fff; }
+
+    .panel {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px;
+      background: rgba(255, 255, 255, .8); border: 1px solid var(--line);
+      border-radius: 22px; padding: clamp(16px, 3vw, 24px); box-shadow: var(--shadow);
+    }
+    .panel__field { display: grid; gap: 6px; min-width: 0; }
+    .panel__label { font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+    .panel__input {
+      width: 100%; min-height: 48px; padding: 11px 14px;
+      border: 1px solid var(--line); border-radius: 12px;
+      background: #fff; color: var(--ink);
+      font: 500 15px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .panel__input:focus-visible { outline: 3px solid rgba(185, 95, 125, .35); outline-offset: 2px; }
+    .panel__hint { font-size: 13px; color: var(--ink-soft); }
+    .panel__hint code { background: var(--blush-soft); padding: 1px 5px; border-radius: 4px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 48px; padding: 11px 18px; border-radius: 999px;
+      border: 1px solid transparent; font: 800 14px/1 "Nunito", sans-serif;
+      cursor: pointer; color: #fff; background: var(--rose-deep);
+      box-shadow: 0 10px 22px rgba(185, 95, 125, .22);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 26px rgba(185, 95, 125, .28); }
+    .btn:active { transform: translateY(0); }
+    .btn:focus-visible { outline: 3px solid rgba(185, 95, 125, .4); outline-offset: 3px; }
+    .btn--soft {
+      background: #fff; color: var(--plum); border-color: var(--line);
+      box-shadow: none; font-size: 13px; min-height: 44px; padding: 9px 14px;
+    }
+    .btn--soft:hover { background: var(--blush-soft); box-shadow: none; }
+
+    .status {
+      margin-top: 14px; min-height: 22px; font-size: 14px; color: var(--ink-soft);
+    }
+    .status[data-tone="error"] { color: #a33a52; }
+    .status[data-tone="ok"] { color: #4f6b45; }
+
+    .toolbar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+      margin: 26px 0 14px;
+    }
+    .toolbar__title { font-size: 24px; margin-right: auto; }
+    .toolbar__note { width: 100%; font-size: 13px; color: var(--ink-soft); }
+
+    .grid {
+      display: grid; gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 235px), 1fr));
+    }
+
+    .qr-card {
+      background: #fffdfb; border: 1px solid var(--line); border-radius: 20px;
+      padding: 18px; box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 12px; min-width: 0;
+    }
+    .qr-card__name { font-size: 21px; }
+    .qr-card__meta { font-size: 12px; color: var(--ink-soft); overflow-wrap: anywhere; }
+    .qr-card__frame {
+      aspect-ratio: 1; display: grid; place-items: center;
+      background: #fff; border-radius: 14px; padding: 6px;
+      border: 1px solid rgba(110, 53, 80, .08);
+    }
+    .qr-card__frame svg { width: 100%; height: auto; display: block; }
+    .qr-card__frame .qr-error { font-size: 13px; color: #a33a52; text-align: center; padding: 12px; }
+    .qr-card__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .qr-card__actions .btn { flex: 1 1 auto; }
+
+    .custom { margin-top: 26px; }
+    .custom .panel { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; }
+
+    .footnote {
+      margin-top: 34px; padding: 18px 20px; border-radius: 18px;
+      background: rgba(255, 255, 255, .62); border: 1px dashed var(--line);
+      font-size: 13.5px; color: var(--ink-soft);
+    }
+    .footnote strong { color: var(--plum); }
+    .footnote ol { margin: 8px 0 0; padding-left: 20px; }
+    .footnote li { margin: 4px 0; }
+
+    @media (max-width: 620px) {
+      .panel, .custom .panel { grid-template-columns: 1fr; }
+      .panel .btn { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .tool__back, .panel, .toolbar, .custom, .footnote, .tool__subtitle, .tool__kicker { display: none !important; }
+      .tool__head { margin: 0 0 8mm; }
+      .tool__title { font-size: 20pt; }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 8mm; }
+      .qr-card { box-shadow: none; border: 1.5pt solid #241a2e; border-radius: 4mm; break-inside: avoid; padding: 6mm; }
+      .qr-card__name { font-size: 15pt; }
+      .qr-card__meta { font-size: 8pt; }
+      .qr-card__frame { border: none; padding: 0; }
+      .qr-card__actions { display: none; }
+      .qr-card__frame svg { width: 100% !important; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="tool">
+    <header class="tool__head">
+      <div>
+        <p class="tool__kicker">Herramienta local · sin conexión</p>
+        <h1 class="tool__title">Estudio de códigos QR</h1>
+        <p class="tool__subtitle">
+          Genera los códigos definitivos del jardín. Primero publica el libro, pega aquí la URL
+          pública y descarga cada QR en SVG (vectorial) o PNG (para imprimir en tarjeta).
+        </p>
+      </div>
+      <a class="tool__back" href="../index.html">← Volver al libro</a>
+    </header>
+
+    <section class="panel" aria-labelledby="url-label">
+      <div class="panel__field">
+        <label class="panel__label" id="url-label" for="base-url">URL pública del libro</label>
+        <input class="panel__input" id="base-url" type="url" inputmode="url" spellcheck="false"
+               placeholder="https://tu-regalo.netlify.app" autocomplete="url" />
+        <p class="panel__hint">
+          Debe empezar por <code>https://</code>. También puedes escribirla en
+          <code>js/config.js → siteUrl</code> para que el libro use estos enlaces.
+        </p>
+      </div>
+      <button class="btn" id="generate" type="button">Generar códigos</button>
+    </section>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <div class="toolbar">
+      <h2 class="toolbar__title">Páginas del libro</h2>
+      <button class="btn btn--soft" id="print-sheet" type="button">Imprimir hoja de tarjetas</button>
+      <p class="toolbar__note">
+        Consejo: imprime en papel blanco mate, sin reducir el tamaño, y deja el margen blanco
+        alrededor del código. Los QR usan corrección de errores H y contraste alto.
+      </p>
+    </div>
+
+    <div class="grid" id="qr-grid" aria-live="polite"></div>
+
+    <section class="custom" aria-labelledby="custom-title">
+      <div class="toolbar">
+        <h2 class="toolbar__title" id="custom-title">Un enlace suelto</h2>
+        <p class="toolbar__note">Para una canción, un video o cualquier sorpresa: pega la URL y genera su QR.</p>
+      </div>
+      <div class="panel">
+        <div class="panel__field">
+          <label class="panel__label" for="custom-url">URL o texto</label>
+          <input class="panel__input" id="custom-url" type="text" spellcheck="false" placeholder="https://open.spotify.com/..." />
+        </div>
+        <div class="panel__field">
+          <label class="panel__label" for="custom-name">Nombre (opcional)</label>
+          <input class="panel__input" id="custom-name" type="text" placeholder="Nuestra canción" />
+        </div>
+        <button class="btn" id="custom-generate" type="button">Generar QR</button>
+      </div>
+      <div class="grid" id="custom-grid" style="margin-top:16px"></div>
+    </section>
+
+    <section class="footnote">
+      <strong>Antes de imprimir, comprueba:</strong>
+      <ol>
+        <li>Abre la URL pública en el celular (sin estar en tu red local) y confirma que carga.</li>
+        <li>Escanea cada QR con la cámara a la distancia real de uso.</li>
+        <li>Si cambias de dominio, vuelve a generar los códigos: el enlace va dentro del dibujo.</li>
+        <li>Los QR de este libro son locales: no dependen de ningún servicio externo.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script src="../vendor/qrcode.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/qr.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      const C = window.CONTENT || {};
+      const grid = document.getElementById("qr-grid");
+      const customGrid = document.getElementById("custom-grid");
+      const status = document.getElementById("status");
+      const input = document.getElementById("base-url");
+      const customInput = document.getElementById("custom-url");
+      const customName = document.getElementById("custom-name");
+
+      const pageNames = {
+        cover: "Portada",
+        pusheen: "Pusheen & Tommy",
+        themes: "Pequeños universos",
+        icons: "Cosas nuestras",
+        collage: "Nuestro álbum",
+        drawings: "Tus dibujos",
+        flowers: "Jardín QR",
+        comments: "Libro de mensajes",
+        credits: "Créditos",
+        final: "Feliz cumpleaños"
+      };
+
+      const order = Array.isArray(C.pageOrder) ? C.pageOrder : Object.keys(pageNames);
+
+      function setStatus(text, tone) {
+        status.textContent = text || "";
+        status.dataset.tone = tone || "";
+      }
+
+      function normalizeBase(value) {
+        const raw = String(value || "").trim();
+        if (!raw) return "";
+        try {
+          const url = new URL(raw);
+          if (!/^https?:$/.test(url.protocol)) return "";
+          url.hash = "";
+          return url.href.replace(/\/+$/, "");
+        } catch {
+          return "";
+        }
+      }
+
+      function safeName(value) {
+        return String(value || "codigo-qr")
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "")
+          .slice(0, 48) || "codigo-qr";
+      }
+
+      function downloadSvg(url, name) {
+        const markup = window.BB.qr.svg(url, { label: "Código QR: " + name });
+        if (!markup) {
+          setStatus("No se pudo generar el SVG. Revisa que vendor/qrcode.js esté presente.", "error");
+          return;
+        }
+        const blob = new Blob([markup], { type: "image/svg+xml;charset=utf-8" });
+        const href = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = href;
+        link.download = safeName(name) + ".svg";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(href), 1500);
+        setStatus("SVG descargado: " + name + ".", "ok");
+      }
+
+      function downloadPng(url, name, size) {
+        const markup = window.BB.qr.svg(url, { label: "Código QR: " + name });
+        if (!markup) {
+          setStatus("No se pudo generar el QR.", "error");
+          return;
+        }
+        const blob = new Blob([markup], { type: "image/svg+xml;charset=utf-8" });
+        const href = URL.createObjectURL(blob);
+        const image = new Image();
+        image.onload = function () {
+          const canvas = document.createElement("canvas");
+          canvas.width = size;
+          canvas.height = size;
+          const context = canvas.getContext("2d");
+          context.fillStyle = "#fffdf9";
+          context.fillRect(0, 0, size, size);
+          context.imageSmoothingEnabled = false;
+          context.drawImage(image, 0, 0, size, size);
+          URL.revokeObjectURL(href);
+          canvas.toBlob(function (png) {
+            if (!png) return;
+            const pngHref = URL.createObjectURL(png);
+            const link = document.createElement("a");
+            link.href = pngHref;
+            link.download = safeName(name) + "-" + size + ".png";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.setTimeout(() => URL.revokeObjectURL(pngHref), 1500);
+            setStatus("PNG descargado (" + size + " px): " + name + ".", "ok");
+          }, "image/png");
+        };
+        image.onerror = function () {
+          URL.revokeObjectURL(href);
+          setStatus("No se pudo convertir a PNG. Descarga el SVG y conviértelo en tu editor.", "error");
+        };
+        image.src = href;
+      }
+
+      function card(data, options) {
+        const article = document.createElement("article");
+        article.className = "qr-card";
+
+        const title = document.createElement("h3");
+        title.className = "qr-card__name";
+        title.textContent = data.name;
+
+        const meta = document.createElement("p");
+        meta.className = "qr-card__meta";
+        meta.textContent = data.url;
+
+        const frame = document.createElement("div");
+        frame.className = "qr-card__frame";
+        const svg = window.BB.qr.svg(data.url, { label: "Código QR: " + data.name });
+        if (svg) frame.innerHTML = svg;
+        else {
+          const error = document.createElement("p");
+          error.className = "qr-error";
+          error.textContent = "No se pudo generar este código.";
+          frame.appendChild(error);
+        }
+
+        const actions = document.createElement("div");
+        actions.className = "qr-card__actions";
+
+        if (svg && (!options || options.downloads !== false)) {
+          const svgBtn = document.createElement("button");
+          svgBtn.type = "button";
+          svgBtn.className = "btn btn--soft";
+          svgBtn.textContent = "SVG";
+          svgBtn.addEventListener("click", () => downloadSvg(data.url, data.name));
+          actions.appendChild(svgBtn);
+
+          [512, 1024].forEach((size) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "btn btn--soft";
+            btn.textContent = size + " PNG";
+            btn.addEventListener("click", () => downloadPng(data.url, data.name, size));
+            actions.appendChild(btn);
+          });
+        }
+
+        article.appendChild(title);
+        article.appendChild(frame);
+        article.appendChild(meta);
+        if (actions.childElementCount) article.appendChild(actions);
+        return article;
+      }
+
+      function renderPages(base) {
+        grid.innerHTML = "";
+        if (!base) {
+          setStatus("Escribe una URL pública válida (https://…) para generar los códigos.", "error");
+          return;
+        }
+        setStatus("Generando " + order.length + " códigos…", "");
+        order.forEach((id) => {
+          const name = pageNames[id] || id;
+          grid.appendChild(
+            card({ name: name, url: base + "/index.html#" + id }, { downloads: true })
+          );
+        });
+        setStatus(
+          "Códigos generados para " + base + ". Comprueba que el libro esté publicado antes de imprimir.",
+          "ok"
+        );
+      }
+
+      document.getElementById("generate").addEventListener("click", () => {
+        const base = normalizeBase(input.value);
+        if (!base) {
+          setStatus("La URL no es válida. Ejemplo: https://mi-regalo.netlify.app", "error");
+          input.focus();
+          return;
+        }
+        try {
+          localStorage.setItem("bb.qr.base", base);
+        } catch (error) {
+          /* modo privado */
+        }
+        renderPages(base);
+      });
+
+      document.getElementById("print-sheet").addEventListener("click", () => {
+        if (!grid.childElementCount) {
+          setStatus("Genera primero los códigos para poder imprimirlos.", "error");
+          return;
+        }
+        window.print();
+      });
+
+      document.getElementById("custom-generate").addEventListener("click", () => {
+        const raw = String(customInput.value || "").trim();
+        if (!raw) {
+          setStatus("Escribe una URL o un texto para el QR suelto.", "error");
+          customInput.focus();
+          return;
+        }
+        const name = String(customName.value || "").trim() || "Enlace suelto";
+        customGrid.innerHTML = "";
+        customGrid.appendChild(card({ name: name, url: raw }, { downloads: true }));
+        setStatus("Código suelto generado: " + name + ".", "ok");
+      });
+
+      customInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") document.getElementById("custom-generate").click();
+      });
+
+      // Pre-rellenar con siteUrl o con la última URL usada en esta herramienta.
+      const configured = normalizeBase(C.siteUrl);
+      if (configured) {
+        input.value = configured;
+        renderPages(configured);
+      } else {
+        try {
+          const saved = localStorage.getItem("bb.qr.base");
+          if (saved) {
+            input.value = saved;
+            renderPages(normalizeBase(saved));
+          }
+        } catch (error) {
+          /* modo privado */
+        }
+      }
+
+      if (!window.BB || !window.BB.qr || !window.BB.qr.ready()) {
+        setStatus("Falta vendor/qrcode.js: no se pueden generar códigos sin esa librería local.", "error");
+      }
+    })();
+  </script>
+</body>
+</html>

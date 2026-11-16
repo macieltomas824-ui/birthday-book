@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Marco de rosas para código QR">
+  <defs>
+    <radialGradient id="petal" cx="35%" cy="25%" r="80%">
+      <stop offset="0" stop-color="#f8ccd7"/>
+      <stop offset=".65" stop-color="#e9a9bd"/>
+      <stop offset="1" stop-color="#cf7f99"/>
+    </radialGradient>
+    <radialGradient id="petalIn" cx="40%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#fbe0e6"/>
+      <stop offset="1" stop-color="#d98fa6"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9c8b1"/>
+      <stop offset="1" stop-color="#8fa487"/>
+    </linearGradient>
+  </defs>
+
+  <!-- hojas exteriores -->
+  <g fill="url(#leaf)">
+    <path d="M300 300c-180-10-260-70-254-142 84-6 186 44 254 142z" opacity=".85"/>
+    <path d="M300 300c180-10 260-70 254-142-84-6-186 44-254 142z" opacity=".85"/>
+    <path d="M300 300c-150 90-210 190-164 250 72-40 140-140 164-250z" opacity=".7"/>
+    <path d="M300 300c150 90 210 190 164 250-72-40-140-140-164-250z" opacity=".7"/>
+  </g>
+
+  <!-- pétalos exteriores -->
+  <g>
+    <g transform="translate(300 300) rotate(0)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(36)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(72)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(108)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(144)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(180)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(216)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(252)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(288)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+    <g transform="translate(300 300) rotate(324)"><ellipse cx="0" cy="-212" rx="86" ry="112" fill="url(#petal)"/></g>
+  </g>
+
+  <!-- pétalos interiores -->
+  <g>
+    <g transform="translate(300 300) rotate(18)"><ellipse cx="0" cy="-154" rx="64" ry="86" fill="url(#petalIn)"/></g>
+    <g transform="translate(300 300) rotate(78)"><ellipse cx="0" cy="-154" rx="64" ry="86" fill="url(#petalIn)"/></g>
+    <g transform="translate(300 300) rotate(138)"><ellipse cx="0" cy="-154" rx="64" ry="86" fill="url(#petalIn)"/></g>
+    <g transform="translate(300 300) rotate(198)"><ellipse cx="0" cy="-154" rx="64" ry="86" fill="url(#petalIn)"/></g>
+    <g transform="translate(300 300) rotate(258)"><ellipse cx="0" cy="-154" rx="64" ry="86" fill="url(#petalIn)"/></g>
+    <g transform="translate(300 300) rotate(318)"><ellipse cx="0" cy="-154" rx="64" ry="86" fill="url(#petalIn)"/></g>
+  </g>
+
+  <!-- centro blanco para el QR -->
+  <circle cx="300" cy="300" r="151" fill="#fffaf7"/>
+  <circle cx="300" cy="300" r="151" fill="none" stroke="#efc6d1" stroke-width="3"/>
+  <circle cx="300" cy="300" r="158" fill="none" stroke="#f6d9e0" stroke-width="1.5"/>
+
+  <!-- detalles -->
+  <g fill="#fbe6eb" opacity=".8">
+    <circle cx="300" cy="62" r="7"/><circle cx="469" cy="131" r="6"/><circle cx="538" cy="300" r="7"/>
+    <circle cx="469" cy="469" r="6"/><circle cx="300" cy="538" r="7"/><circle cx="131" cy="469" r="6"/>
+    <circle cx="62" cy="300" r="7"/><circle cx="131" cy="131" r="6"/>
+  </g>
+
+  <!-- lazo inferior -->
+  <g fill="#e3a2b6">
+    <path d="M300 546c-22-26-58-22-58 4 0 18 30 26 58 12z"/>
+    <path d="M300 546c22-26 58-22 58 4 0 18-30 26-58 12z"/>
+    <circle cx="300" cy="548" r="10" fill="#cf7f99"/>
+  </g>
+</svg>

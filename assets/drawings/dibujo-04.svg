@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" role="img" aria-label="Dibujo de una casita con flores en la ventana">
+  <defs>
+    <filter id="wobble">
+      <feTurbulence type="fractalNoise" baseFrequency=".014" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g filter="url(#wobble)" fill="none" stroke="#6e3550" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- suelo -->
+    <path d="M80 660c120-18 240-18 360 0s290 18 430 0" opacity=".5" stroke-width="2.4"/>
+
+    <!-- casa -->
+    <path d="M330 660V400l170-120 170 120v260"/>
+    <path d="M290 420L500 272l210 148"/>
+    <path d="M500 272v-38"/>
+    <!-- chimenea -->
+    <path d="M598 350v-70h46v104"/>
+    <!-- humo en corazones -->
+    <path d="M621 258c-10 16 8 26 12 32 6-8 22-18 10-32-4-5-11-4-11 2" opacity=".65"/>
+    <path d="M630 208c-7 11 6 18 8 22 5-5 16-12 7-22-3-4-8-3-8 1" opacity=".45"/>
+
+    <!-- puerta -->
+    <path d="M460 660V532c0-24 80-24 80 0v128"/>
+    <circle cx="524" cy="596" r="4" fill="#6e3550" stroke="none"/>
+    <path d="M500 532v128" opacity=".4" stroke-width="2"/>
+
+    <!-- ventanas -->
+    <g>
+      <rect x="358" y="450" width="78" height="70" rx="4"/>
+      <path d="M397 450v70M358 485h78"/>
+      <path d="M358 520c-8 0-12 8-8 14M436 520c8 0 12 8 8 14" opacity=".7"/>
+      <rect x="564" y="450" width="78" height="70" rx="4"/>
+      <path d="M603 450v70M564 485h78"/>
+    </g>
+
+    <!-- macetas -->
+    <g>
+      <path d="M350 586h94l-8 44h-78z"/>
+      <path d="M397 586c-4-24 8-44 30-52M397 586c-2-22-16-34-34-36"/>
+      <g fill="#e3a2b6" stroke="none" opacity=".3">
+        <circle cx="427" cy="530" r="14"/><circle cx="363" cy="546" r="12"/>
+      </g>
+      <circle cx="427" cy="530" r="10"/>
+      <circle cx="363" cy="546" r="8"/>
+    </g>
+
+    <!-- jardín -->
+    <g stroke-width="2.4">
+      <path d="M170 660v-46M170 630c-14-4-22-14-22-28 14 2 22 12 22 28zM171 640c14-4 22-14 22-28-14 2-22 12-22 28z"/>
+      <path d="M250 660v-34M250 640c-10-2-16-10-16-22 10 2 16 10 16 22z"/>
+      <path d="M760 660v-52M760 628c-16-4-26-16-26-32 16 2 26 14 26 32zM761 636c16-4 26-16 26-32-16 2-26 14-26 32z"/>
+      <path d="M850 660v-30M850 642c-9-2-14-8-14-18 9 2 14 8 14 18z"/>
+      <g fill="#e3a2b6" stroke="none" opacity=".28">
+        <circle cx="170" cy="614" r="12"/><circle cx="760" cy="608" r="14"/><circle cx="250" cy="626" r="9"/>
+      </g>
+    </g>
+
+    <!-- camino -->
+    <path d="M470 660c-4 22-14 40-30 54M530 660c4 22 14 40 30 54" opacity=".45" stroke-width="2.2"/>
+
+    <!-- pájaros -->
+    <g stroke-width="2.2" opacity=".6">
+      <path d="M206 320c8-8 16-8 24 0M240 300c6-6 12-6 18 0"/>
+      <path d="M790 360c7-7 14-7 21 0"/>
+    </g>
+
+    <!-- sol -->
+    <circle cx="806" cy="200" r="42" opacity=".6"/>
+    <g opacity=".4" stroke-width="2.2">
+      <path d="M806 140v-18M806 278v-18M746 200h-18M884 200h-18M764 158l-12-12M848 158l12-12M764 242l-12 12M848 242l12 12"/>
+    </g>
+
+    <!-- firma -->
+    <path d="M842 700c16-12 32-12 46 0M856 712c10 6 20 6 30 0" opacity=".4" stroke-width="2"/>
+  </g>
+</svg>

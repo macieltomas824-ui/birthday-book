@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Dibujo de una luna creciente con estrellas y nubes">
+  <defs>
+    <filter id="wobble">
+      <feTurbulence type="fractalNoise" baseFrequency=".013" numOctaves="2" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g filter="url(#wobble)" fill="none" stroke="#6e3550" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- halo -->
+    <circle cx="400" cy="470" r="270" stroke-width="1.6" opacity=".18" stroke-dasharray="1 11"/>
+
+    <!-- luna -->
+    <path d="M470 190c-92 12-166 94-166 200 0 118 88 206 198 206 28 0 54-6 78-16-42 54-106 88-178 88-124 0-224-100-224-224 0-136 114-246 252-254 14 0 28 0 40 2z" fill="#f7dde4" fill-opacity=".55"/>
+    <path d="M470 190c-92 12-166 94-166 200 0 118 88 206 198 206 28 0 54-6 78-16-42 54-106 88-178 88-124 0-224-100-224-224 0-136 114-246 252-254 14 0 28 0 40 2z"/>
+
+    <!-- cara de la luna -->
+    <path d="M320 388c12-12 30-12 42 0" opacity=".8"/>
+    <path d="M430 400c10-9 24-9 34 0" opacity=".8"/>
+    <path d="M356 448c14 10 36 10 50-2" opacity=".7"/>
+    <ellipse cx="300" cy="430" rx="16" ry="7" fill="#e3a2b6" fill-opacity=".25" stroke="none"/>
+
+    <!-- estrellas grandes -->
+    <g>
+      <path d="M618 264l14 34 36 4-28 24 8 36-30-20-32 20 9-36-27-24 36-4z"/>
+      <path d="M214 626l11 27 29 3-22 19 6 29-24-16-25 16 7-29-22-19 29-3z" opacity=".85"/>
+      <path d="M636 690l8 20 21 2-16 14 4 21-17-12-18 12 5-21-16-14 21-2z" opacity=".7"/>
+    </g>
+
+    <!-- estrellas pequeñas -->
+    <g stroke-width="2.4">
+      <path d="M188 270v30M173 285h30"/>
+      <path d="M590 520v20M580 530h20"/>
+      <path d="M304 216v18M295 225h18"/>
+      <path d="M682 430v16M674 438h16"/>
+      <path d="M160 470v14M153 477h14"/>
+      <path d="M520 780v18M511 789h18"/>
+    </g>
+
+    <!-- constelación -->
+    <g stroke-width="2" opacity=".55">
+      <path d="M232 340l38 22 30-34 34 16"/>
+      <circle cx="232" cy="340" r="3" fill="#6e3550"/>
+      <circle cx="270" cy="362" r="3" fill="#6e3550"/>
+      <circle cx="300" cy="328" r="3" fill="#6e3550"/>
+      <circle cx="334" cy="344" r="3" fill="#6e3550"/>
+    </g>
+
+    <!-- nubes -->
+    <g stroke-width="2.6">
+      <path d="M116 748c-30 0-42-32-16-46 4-24 34-34 54-22 10-20 42-22 54-2 26-4 42 16 36 36 20 6 20 34-2 38z"/>
+      <path d="M584 824c-24 0-34-26-13-38 4-20 28-28 44-18 8-16 34-18 44-2 22-4 34 14 29 30 16 4 16 28-2 30z" opacity=".8"/>
+    </g>
+
+    <!-- estrellas colgantes -->
+    <g stroke-width="2" opacity=".7">
+      <path d="M300 800c0 32 14 54 34 62M334 862l-10 20 20-4z"/>
+      <path d="M520 250c-16 24-20 44-12 66M508 316l4 22 12-16z"/>
+    </g>
+
+    <!-- suelo -->
+    <path d="M120 918c90-26 180-26 280 0s190 26 290 0" stroke-width="2.2" opacity=".45"/>
+  </g>
+  <g fill="#e3a2b6" opacity=".13">
+    <circle cx="330" cy="380" r="68"/>
+  </g>
+</svg>

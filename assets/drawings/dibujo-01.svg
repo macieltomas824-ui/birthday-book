@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Dibujo a línea de dos gatos formando un corazón">
+  <defs>
+    <filter id="wobble">
+      <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g filter="url(#wobble)" fill="none" stroke="#6e3550" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- corazón envolvente -->
+    <path d="M400 780c-150-88-262-176-262-300 0-76 56-122 122-122 54 0 96 32 140 96 44-64 86-96 140-96 66 0 122 46 122 122 0 124-112 212-262 300z" opacity=".45" stroke-dasharray="2 9"/>
+
+    <!-- gato izquierdo -->
+    <path d="M188 560c-30-40-36-104-8-154 26-46 76-70 128-58 36 8 62 32 76 64"/>
+    <path d="M188 560c-4 34 18 62 52 68 34 6 62-10 78-38"/>
+    <path d="M192 430l-28-62 54 22M306 400l30-60 20 58" opacity=".85"/>
+    <path d="M212 448c8-10 20-10 28 0M278 446c9-9 21-9 29 0" opacity=".9"/>
+    <path d="M258 474c4-5 9-5 13 0-2 6-11 6-13 0z" fill="#6e3550" stroke="none"/>
+    <path d="M265 482c-5 10-16 12-24 4M265 482c5 10 16 12 24 4"/>
+    <path d="M170 462l-32-8M171 476l-30 8M335 460l30-10M334 474l32 6" opacity=".55"/>
+    <path d="M236 548c-10 18-4 40 14 50" opacity=".5"/>
+    <path d="M300 578c26 18 58 18 84 4" opacity=".6"/>
+    <!-- cola izquierda -->
+    <path d="M330 596c44 8 66-20 54-46-7-15-24-14-28-1-3 9 8 13 14 6" opacity=".85"/>
+
+    <!-- gato derecho -->
+    <path d="M612 560c30-40 36-104 8-154-26-46-76-70-128-58-36 8-62 32-76 64"/>
+    <path d="M612 560c4 34-18 62-52 68-34 6-62-10-78-38"/>
+    <path d="M608 430l28-62-54 22M494 400l-30-60-20 58" opacity=".85"/>
+    <path d="M588 448c-8-10-20-10-28 0M522 446c-9-9-21-9-29 0" opacity=".9"/>
+    <path d="M529 474c4-5 9-5 13 0-2 6-11 6-13 0z" fill="#6e3550" stroke="none"/>
+    <path d="M535 482c5 10 16 12 24 4M535 482c-5 10-16 12-24 4"/>
+    <path d="M630 462l32-8M629 476l30 8M465 460l-30-10M466 474l-32 6" opacity=".55"/>
+    <path d="M564 548c10 18 4 40-14 50" opacity=".5"/>
+    <path d="M500 578c-26 18-58 18-84 4" opacity=".6"/>
+    <path d="M470 596c-44 8-66-20-54-46 7-15 24-14 28-1 3 9-8 13-14 6" opacity=".85"/>
+
+    <!-- corazones pequeños -->
+    <path d="M394 330c6-9 16-6 16 2 0 7-9 11-16 16-7-5-16-9-16-16 0-8 10-11 16-2z"/>
+    <path d="M355 282c4-6 11-4 11 1 0 5-6 8-11 11-5-3-11-6-11-11 0-5 7-7 11-1z" opacity=".7"/>
+    <path d="M437 268c4-6 11-4 11 1 0 5-6 8-11 11-5-3-11-6-11-11 0-5 7-7 11-1z" opacity=".7"/>
+  </g>
+
+  <!-- acentos de acuarela -->
+  <g filter="url(#wobble)" fill="#e3a2b6" opacity=".16">
+    <ellipse cx="268" cy="470" rx="54" ry="26" transform="rotate(-10 268 470)"/>
+    <ellipse cx="532" cy="470" rx="54" ry="26" transform="rotate(10 532 470)"/>
+  </g>
+
+  <!-- firma -->
+  <g fill="none" stroke="#6e3550" stroke-width="2" stroke-linecap="round" opacity=".4">
+    <path d="M646 846c16-12 32-12 46 0"/>
+    <path d="M660 858c10 6 20 6 30 0"/>
+  </g>
+</svg>

@@ -1,0 +1,260 @@
+/* ============================================================================
+   IMPRESIÓN  ·  css/print.css
+   ============================================================================
+   Se carga solo al imprimir. Prioriza imprimir la página activa (por ejemplo,
+   las tarjetas de flores con QR) sin la interfaz del libro.
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+@media print {
+  html,
+  body {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body::before,
+  .skip-link,
+  .topbar,
+  .navbar,
+  .edge-nav,
+  .swipe-hint,
+  .drawer,
+  .lightbox,
+  .toast,
+  .hearts-layer,
+  #boot,
+  .noscript {
+    display: none !important;
+  }
+
+  .app,
+  .stage,
+  .book-shell,
+  .book,
+  .pages {
+    position: static !important;
+    display: block !important;
+    height: auto !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    perspective: none !important;
+  }
+
+  .book__gutter,
+  .book::before,
+  .page::after,
+  .sheet__scroll::before,
+  .credits__controls,
+  .credits__vignette,
+  .final__sky,
+  .cover__wash,
+  .cover__ribbon,
+  .cover__corner,
+  .cover__deco,
+  .final__deco,
+  .aside__ornament {
+    display: none !important;
+  }
+
+  .page {
+    position: static !important;
+    display: none !important;
+    width: auto !important;
+    height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+  }
+
+  .page.is-active {
+    display: block !important;
+  }
+
+  .sheet {
+    display: block !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .sheet__aside {
+    display: none !important;
+  }
+
+  .sheet__body,
+  .sheet__scroll {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  .sheet__content {
+    max-width: none !important;
+  }
+
+  .page-head {
+    margin-bottom: 7mm;
+  }
+
+  .page-title {
+    font-size: 22pt;
+  }
+
+  .page-subtitle {
+    font-size: 10pt;
+  }
+
+  .page-head__actions {
+    display: none !important;
+  }
+
+  /* Flores y QR: una tarjeta grande por bloque, sin cortes */
+  .flower-grid {
+    display: block !important;
+  }
+
+  .flower-card {
+    display: grid !important;
+    grid-template-columns: 52mm minmax(0, 1fr);
+    align-items: center;
+    gap: 8mm;
+    margin: 0 0 9mm;
+    padding: 6mm;
+    border: 1px solid #c9b3bb !important;
+    border-radius: 4mm;
+    background: #fff !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .flower-card__frame {
+    width: 52mm;
+    filter: none !important;
+  }
+
+  .flower-card__qr {
+    inset: 26.5%;
+    padding: 1mm;
+    box-shadow: none;
+  }
+
+  .flower-card__kicker {
+    font-size: 7pt;
+  }
+
+  .flower-card__title {
+    font-size: 15pt;
+    color: #4a2540 !important;
+  }
+
+  .flower-card__text {
+    font-size: 9.5pt;
+    line-height: 1.45;
+  }
+
+  .flower-card__url {
+    display: none !important;
+  }
+
+  .flower-card__actions {
+    display: none !important;
+  }
+
+  .page-note {
+    margin-top: 6mm;
+    padding: 4mm;
+    border: 1px solid #d6c3c9;
+    background: #fff8f5 !important;
+    font-size: 8.5pt;
+  }
+
+  .cover,
+  .final {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .cover__inner,
+  .final__inner {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 10mm 0 !important;
+  }
+
+  .cover__wreath {
+    opacity: 0.18;
+  }
+
+  .final__letter,
+  .letter-block,
+  .cat-card,
+  .theme-card,
+  .polaroid,
+  .drawing,
+  .comment {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  .credits {
+    height: auto !important;
+    background: #fff !important;
+    color: #2b2030 !important;
+  }
+
+  .credits__sky,
+  .credits__vignette {
+    display: none !important;
+  }
+
+  .credits__viewport {
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .credits__track {
+    padding: 0 !important;
+  }
+
+  .credits__line,
+  .credits__end-line,
+  .credits__end-note {
+    color: #2b2030 !important;
+  }
+
+  .credits__label,
+  .credits__title,
+  .credits__kicker,
+  .credits__end-title {
+    color: #7a4a5c !important;
+    text-shadow: none !important;
+  }
+}

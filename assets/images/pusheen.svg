@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" role="img" aria-label="Ilustración de Pusheen sosteniendo un corazón">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c9c2c6"/>
+      <stop offset="1" stop-color="#b2aaae"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ded7da"/>
+      <stop offset="1" stop-color="#cdc5c9"/>
+    </linearGradient>
+    <linearGradient id="heart" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4b7c8"/>
+      <stop offset="1" stop-color="#e290a9"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#fbe4ea"/>
+      <stop offset="1" stop-color="#fbe4ea" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <circle cx="400" cy="430" r="330" fill="url(#glow)"/>
+  <ellipse cx="400" cy="742" rx="218" ry="34" fill="#d9a9b8" opacity=".28" filter="url(#soft)"/>
+
+  <!-- estrellitas -->
+  <g stroke="#c3a06a" stroke-width="3" stroke-linecap="round" opacity=".7">
+    <path d="M170 250h18M179 241v18"/>
+    <path d="M650 300h14M657 293v14"/>
+    <path d="M620 180h10M625 175v10"/>
+  </g>
+  <g fill="#e3a2b6" opacity=".75">
+    <path d="M205 405c8-12 22-8 22 3 0 9-13 15-22 22-9-7-22-13-22-22 0-11 14-15 22-3z"/>
+    <path d="M600 390c6-9 17-6 17 2 0 7-10 12-17 17-7-5-17-10-17-17 0-8 11-11 17-2z"/>
+  </g>
+
+  <!-- cola -->
+  <path d="M560 610c80 10 118-38 104-88-9-32-48-34-55-8-5 19 17 28 28 14" fill="none" stroke="#aba3a7" stroke-width="34" stroke-linecap="round"/>
+
+  <!-- cuerpo -->
+  <path d="M206 571c-14-150 75-243 194-243s208 93 194 243c-9 96-90 142-194 142s-185-46-194-142z" fill="url(#body)"/>
+  <path d="M290 540c0-92 47-145 110-145s110 53 110 145c0 63-49 99-110 99s-110-36-110-99z" fill="url(#belly)" opacity=".65"/>
+
+  <!-- rayas -->
+  <g fill="#9c9398" opacity=".75">
+    <path d="M247 436c28-14 45-12 58 0-19 10-38 10-58 0z"/>
+    <path d="M268 478c24-12 40-10 51 0-17 9-34 9-51 0z"/>
+    <path d="M495 436c26-12 43-10 56 0-19 9-37 9-56 0z"/>
+    <path d="M481 478c22-11 37-9 47 0-16 8-31 8-47 0z"/>
+  </g>
+
+  <!-- orejas -->
+  <path d="M286 350c-20-34-16-62 3-77 21 7 42 27 51 55z" fill="#b8b0b5"/>
+  <path d="M514 350c20-34 16-62-3-77-21 7-42 27-51 55z" fill="#b8b0b5"/>
+  <path d="M300 342c-10-18-8-34 2-43 12 6 24 17 30 34z" fill="#e5b7c5"/>
+  <path d="M500 342c10-18 8-34-2-43-12 6-24 17-30 34z" fill="#e5b7c5"/>
+
+  <!-- cara -->
+  <g>
+    <ellipse cx="346" cy="452" rx="18" ry="22" fill="#4b3a42"/>
+    <ellipse cx="454" cy="452" rx="18" ry="22" fill="#4b3a42"/>
+    <circle cx="351" cy="445" r="6" fill="#fff" opacity=".9"/>
+    <circle cx="459" cy="445" r="6" fill="#fff" opacity=".9"/>
+    <path d="M382 480c11-9 25-9 36 0" fill="none" stroke="#6b5961" stroke-width="4" stroke-linecap="round"/>
+    <path d="M390 500c6 7 14 7 20 0" fill="none" stroke="#6b5961" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="304" cy="492" rx="20" ry="11" fill="#e8a3b6" opacity=".55"/>
+    <ellipse cx="496" cy="492" rx="20" ry="11" fill="#e8a3b6" opacity=".55"/>
+    <g stroke="#8d8388" stroke-width="3" stroke-linecap="round" opacity=".7">
+      <path d="M252 466l-44-10M252 482l-46 6"/>
+      <path d="M548 466l44-10M548 482l46 6"/>
+    </g>
+  </g>
+
+  <!-- patitas con corazón -->
+  <path d="M300 640c-8 37 6 62 38 62 26 0 38-21 32-48l-8-30z" fill="#c4bcc0"/>
+  <path d="M500 640c8 37-6 62-38 62-26 0-38-21-32-48l8-30z" fill="#c4bcc0"/>
+  <g>
+    <path d="M400 700c-40-27-79-52-79-88 0-24 17-39 38-39 17 0 31 10 41 25 10-15 24-25 41-25 21 0 38 15 38 39 0 36-39 61-79 88z" fill="url(#heart)"/>
+    <path d="M368 601c-8 2-14 8-15 16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+  </g>
+  <g stroke="#9d9498" stroke-width="3" stroke-linecap="round" opacity=".55">
+    <path d="M364 664v14M380 660v16"/>
+    <path d="M436 664v14M420 660v16"/>
+  </g>
+
+  <!-- flores al pie -->
+  <g transform="translate(170 690)">
+    <path d="M0 60c10-24 10-46 0-66" fill="none" stroke="#a9b9a1" stroke-width="4" stroke-linecap="round"/>
+    <path d="M0 22c-18-4-26-15-27-31 16 1 26 10 27 31zM2 40c16-3 24-13 25-27-14 1-23 9-25 27z" fill="#a9b9a1"/>
+    <g fill="#f2b4c6">
+      <circle cx="0" cy="-16" r="12"/><circle cx="13" cy="-8" r="10"/><circle cx="-13" cy="-8" r="10"/><circle cx="0" cy="-2" r="10"/>
+    </g>
+    <circle cx="0" cy="-8" r="6" fill="#f8dfa4"/>
+  </g>
+  <g transform="translate(630 672) scale(-1 1)">
+    <path d="M0 60c10-24 10-46 0-66" fill="none" stroke="#a9b9a1" stroke-width="4" stroke-linecap="round"/>
+    <path d="M0 22c-18-4-26-15-27-31 16 1 26 10 27 31zM2 40c16-3 24-13 25-27-14 1-23 9-25 27z" fill="#a9b9a1"/>
+    <g fill="#f2b4c6">
+      <circle cx="0" cy="-16" r="12"/><circle cx="13" cy="-8" r="10"/><circle cx="-13" cy="-8" r="10"/><circle cx="0" cy="-2" r="10"/>
+    </g>
+    <circle cx="0" cy="-8" r="6" fill="#f8dfa4"/>
+  </g>
+</svg>

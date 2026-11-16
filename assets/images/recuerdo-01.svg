@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-label="Ilustración de un atardecer entre colinas">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff1e6"/>
+      <stop offset=".45" stop-color="#f9d3d3"/>
+      <stop offset=".75" stop-color="#eeaebb"/>
+      <stop offset="1" stop-color="#d98ca4"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6d9"/>
+      <stop offset="1" stop-color="#f6d59c"/>
+    </linearGradient>
+    <linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c2b9ab"/>
+      <stop offset="1" stop-color="#a9a294"/>
+    </linearGradient>
+    <linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9bae94"/>
+      <stop offset="1" stop-color="#7e9479"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".08"/></feComponentTransfer>
+    </filter>
+    <radialGradient id="vignette" cx="50%" cy="45%" r="75%">
+      <stop offset=".55" stop-color="#3a1c2a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3a1c2a" stop-opacity=".22"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="900" height="1125" fill="url(#sky)"/>
+  <circle cx="610" cy="430" r="120" fill="url(#sun)" opacity=".95"/>
+  <circle cx="610" cy="430" r="168" fill="#fff2ce" opacity=".2"/>
+  <circle cx="610" cy="430" r="220" fill="#fff2ce" opacity=".1"/>
+
+  <g fill="none" stroke="#6e3550" stroke-width="3" stroke-linecap="round" opacity=".5">
+    <path d="M255 330c14-12 28-12 42 0M315 300c11-9 22-9 33 0"/>
+    <path d="M690 270c10-8 20-8 30 0"/>
+  </g>
+
+  <g opacity=".35" fill="#fff" filter="url(#grain)">
+    <rect width="900" height="1125"/>
+  </g>
+
+  <path d="M0 760c110-70 200-92 320-54 110 35 170 18 270-42 100-61 210-54 310 14v447H0z" fill="url(#hill1)"/>
+  <path d="M0 880c130-84 246-92 360-44 118 50 218 46 322-24 78-52 148-46 218-6v319H0z" fill="url(#hill2)"/>
+  <path d="M0 980c150-52 252-42 366 2 122 47 236 36 336-14 80-39 146-34 198-10v167H0z" fill="#5f725c" opacity=".85"/>
+
+  <g fill="#d7c9ae" opacity=".7">
+    <path d="M90 905c8-26 8-46 0-66M108 890c4-18 4-32 0-46" stroke="#cbbda2" stroke-width="4" stroke-linecap="round"/>
+    <path d="M810 930c6-22 6-38 0-54" stroke="#cbbda2" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(690 590) scale(.9)">
+    <path d="M0 40c0-40 0-75 0-100" stroke="#5a3122" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="0" cy="-68" r="58" fill="#7f9179"/>
+    <circle cx="-42" cy="-42" r="36" fill="#8fa187"/>
+    <circle cx="40" cy="-48" r="32" fill="#6f836b"/>
+  </g>
+
+  <rect width="900" height="1125" fill="url(#vignette)"/>
+</svg>
