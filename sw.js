@@ -8,18 +8,16 @@
    CACHE_VERSION (por ejemplo a "v2"). El navegador descartará la copia vieja.
    ========================================================================== */
 
-const CACHE_VERSION = "entre-petalos-v1";
+const CACHE_VERSION = "de-tomi-para-ro-v2";
 const APP_SHELL = [
   "./",
   "index.html",
-  "personalizar.html",
   "manifest.webmanifest",
   "css/base.css",
   "css/book.css",
   "css/pages.css",
   "css/print.css",
   "js/config.js",
-  "js/overrides.js",
   "js/utils.js",
   "js/art.js",
   "js/qr.js",

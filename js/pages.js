@@ -21,7 +21,7 @@
     cover: {
       name: "Portada",
       toc: "El comienzo",
-      chapter: "Portada"
+      chapter: ""
     },
 
     pusheen: {
@@ -104,7 +104,7 @@
     credits: {
       name: "Créditos",
       toc: "El final del juego",
-      chapter: "Créditos"
+      chapter: ""
     },
     final: {
       name: "Feliz cumpleaños",
