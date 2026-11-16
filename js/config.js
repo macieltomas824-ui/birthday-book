@@ -331,8 +331,8 @@ window.CONTENT = {
                      "cooldownSeconds":  20,
                      "backend":  {
                                      "provider":  "supabase",
-                                     "url":  "",
-                                     "anonKey":  "",
+                                     "url":  "https://gleqjuplsuinebzizxff.supabase.co",
+                                     "anonKey":  "sb_publishable_9MfTjuwxxlzmjXlgD7bw4A_zKzac3x7",
                                      "table":  "book_comments"
                                  }
                  },
